@@ -1,7 +1,15 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://Lauphie.github.io/Blog/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
+theme = "paper"
+
+publishDir = 'docs'
+
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+  name = "Philipp"
+  bio = "Kurzbeschreibung"
