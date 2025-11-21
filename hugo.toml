@@ -1,12 +1,12 @@
-baseURL = 'https://Lauphie.github.io/Blog/'
+baseURL = 'https://lauphie.github.io/Blog/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = "paper"
+theme = 'paper'
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
 
 [params]
-  name = "Philipp"
-  bio = "Kurzbeschreibung"
+  name = 'P'
+  bio = 'Kurzbeschreibung'
