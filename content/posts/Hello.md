@@ -34,3 +34,4 @@ If you used ai, we would like you to write one post about that as well. If you d
 
 ![Beschreibung](/images/controlls.png)
 
+{{< img src="images/controlls.png" alt="Mein Bild" >}}
