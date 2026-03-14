@@ -32,6 +32,18 @@ Here can you see what it looks like to complete a run of on the given parkour wi
 If you used ai, we would like you to write one post about that as well. If you don't feel confident to post it on your website, please just send me and Jan an email containing that section. There will be no disadvantages for using ai. If you want, add parts of your chats. (Benefits, problems, did it work well?)
 
 
-![Beschreibung](/images/controlls.png)
-
 {{< img src="images/controlls.png" alt="Mein Bild" >}}
+
+
+Hier ist mein C#-Beispiel:
+
+```csharp
+public class Player
+{
+    public string Name { get; set; }
+
+    public Player(string name)
+    {
+        Name = name;
+    }
+}
