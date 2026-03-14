@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Philipp Lautenschläger - BLOG</title>
-    <link>https://lauphie.github.io/Blog/categories/</link>
-    <description>Recent content in Categories on Philipp Lautenschläger - BLOG</description>
+    <title>Categories on P - BLOG</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on P - BLOG</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://lauphie.github.io/Blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Syntax</title>
-      <link>https://lauphie.github.io/Blog/categories/syntax/</link>
+      <link>http://localhost:1313/categories/syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://lauphie.github.io/Blog/categories/syntax/</guid>
+      <guid>http://localhost:1313/categories/syntax/</guid>
       <description></description>
     </item>
     <item>
       <title>Themes</title>
-      <link>https://lauphie.github.io/Blog/categories/themes/</link>
+      <link>http://localhost:1313/categories/themes/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://lauphie.github.io/Blog/categories/themes/</guid>
+      <guid>http://localhost:1313/categories/themes/</guid>
       <description></description>
     </item>
   </channel>

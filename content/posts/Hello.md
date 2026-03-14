@@ -31,15 +31,6 @@ Here can you see what it looks like to complete a run of on the given parkour wi
 ## 8 AI
 If you used ai, we would like you to write one post about that as well. If you don't feel confident to post it on your website, please just send me and Jan an email containing that section. There will be no disadvantages for using ai. If you want, add parts of your chats. (Benefits, problems, did it work well?)
 
-\Blog\static\images\controlls.png
 
-
-![Beschreibung](\images\controlls.png)
-
-
-<figure>
-  <img src="/images/controlls.png" alt="VR Setup" style="width:100%; max-width:700px;">
-  <figcaption>Abbildung 1: Mein VR-Setup.</figcaption>
-</figure>
-
+![Beschreibung](/images/controlls.png)
 
