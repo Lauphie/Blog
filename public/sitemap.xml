@@ -2,20 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/Blog/</loc>
-    <lastmod>2026-03-09T16:37:53+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/Blog/posts/</loc>
-    <lastmod>2026-03-09T16:37:53+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/Blog/posts/test/</loc>
-    <lastmod>2026-03-09T16:37:53+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/Blog/posts/hello/</loc>
+    <loc>https://lauphie.github.io/Blog/posts/hello/</loc>
     <lastmod>2025-11-20T11:24:14+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/Blog/categories/</loc>
+    <loc>https://lauphie.github.io/Blog/</loc>
+    <lastmod>2025-11-20T11:24:14+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/Blog/tags/</loc>
+    <loc>https://lauphie.github.io/Blog/posts/</loc>
+    <lastmod>2025-11-20T11:24:14+01:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/categories/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/css/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/html/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/markdown/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/posts/markdown-syntax/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/categories/syntax/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/categories/themes/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/privacy/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/posts/rich-content/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lauphie.github.io/Blog/tags/shortcodes/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
 </urlset>

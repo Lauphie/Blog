@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
-    <link>http://localhost:1313/Blog/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <title>Tags on Philipp Lautenschläger - BLOG</title>
+    <link>https://lauphie.github.io/Blog/tags/</link>
+    <description>Recent content in Tags on Philipp Lautenschläger - BLOG</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/Blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lauphie.github.io/Blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Css</title>
+      <link>https://lauphie.github.io/Blog/tags/css/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lauphie.github.io/Blog/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Html</title>
+      <link>https://lauphie.github.io/Blog/tags/html/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lauphie.github.io/Blog/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>https://lauphie.github.io/Blog/tags/markdown/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lauphie.github.io/Blog/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Privacy</title>
+      <link>https://lauphie.github.io/Blog/tags/privacy/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lauphie.github.io/Blog/tags/privacy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcodes</title>
+      <link>https://lauphie.github.io/Blog/tags/shortcodes/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lauphie.github.io/Blog/tags/shortcodes/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

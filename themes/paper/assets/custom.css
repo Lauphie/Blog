@@ -1,2 +1,95 @@
 /* Place custom css here. */
 @reference './app.css';
+
+:root {
+  --w: calc(1450px + 32px * 2);
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  align-items: start;
+}
+
+.post-content {
+  min-width: 0;
+  width: 100%;
+  justify-self: end;
+}
+
+.post-content > h1,
+.post-content > *:not(.post-toc) {
+  max-width: 1100px;
+}
+
+.post-content article,
+.post-content .prose,
+article,
+.prose {
+  max-width: 1100px !important;
+  width: 100%;
+}
+
+.post-toc {
+  position: sticky;
+  top: 2rem;
+}
+
+.post-toc a {
+  text-decoration: none;
+}
+
+.post-toc a:hover {
+  text-decoration: underline;
+}
+
+.post-toc ul,
+.post-toc li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-toc ul ul {
+  padding-left: 1rem;
+}
+
+.post-toc li {
+  margin-bottom: 0.35rem;
+}
+
+.toc-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 1000px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-content {
+    justify-self: stretch;
+  }
+
+  .post-content > h1,
+  .post-content > *:not(.post-toc),
+  .post-content article,
+  .post-content .prose,
+  article,
+  .prose {
+    max-width: 100% !important;
+  }
+
+  .post-toc {
+    position: static;
+    margin-bottom: 1.5rem;
+    order: -1;
+  }
+}

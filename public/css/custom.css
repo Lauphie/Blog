@@ -1,0 +1,24 @@
+.post-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.post-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-toc {
+  width: 260px;
+  position: sticky;
+  top: 2rem;
+}
+
+.post-toc ul {
+  padding-left: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
