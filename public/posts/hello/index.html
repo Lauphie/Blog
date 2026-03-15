@@ -20,20 +20,20 @@
   />
 
   
-  <title>Interaction in Virtual and Augmented Reality 2025/26 - P - BLOG</title>
+  <title>Interaction in Virtual and Augmented Reality 2025/26 - BLOG von Philipp L.</title>
 
   
   <meta name="theme-color" />
 
   <meta name="description" content="Implementing an interaction and locomotion project.
 Skateboard XR
-1 Introduction &amp; Motivation
+Introduction &amp; Motivation
 Introduction
 This blog is a documentation for an project in the lecture Interaction in Virtual and Augmented Reality 2025/26.
 In the lecture we learned a lot about VR/AR/XR and what you can do to make pleasing projects in this field.
 To get a grade we were requiered to develop and implement a new locomotion technique and some kind of an interaction Task.
 For this we got an project with a map and an easy example Solution to have a little reference and see what we have to do." />
-  <meta name="author" content="P - BLOG" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/Blog/main.min.css" />
+  <meta name="author" content="BLOG von Philipp L." /><link rel="preload stylesheet" as="style" href="http://localhost:1313/Blog/main.min.css" />
 
   
   <link rel="preload" as="image" href="http://localhost:1313/Blog/theme.png" />
@@ -69,7 +69,7 @@ For this we got an project with a map and an easy example Solution to have a lit
     <a
       class="-translate-y-[1px] text-2xl font-medium"
       href="http://localhost:1313/Blog/"
-      >P - BLOG</a
+      >BLOG von Philipp L.</a
     >
     <div
       class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
@@ -140,7 +140,7 @@ For this we got an project with a map and an easy example Solution to have a lit
     <h1>Interaction in Virtual and Augmented Reality 2025/26</h1>
     <p>Implementing an interaction and locomotion project.</p>
 <h1 id="skateboard-xr">Skateboard XR</h1>
-<h2 id="1-introduction--motivation">1 Introduction &amp; Motivation</h2>
+<h2 id="introduction--motivation">Introduction &amp; Motivation</h2>
 <h3 id="introduction">Introduction</h3>
 <p>This blog is a documentation for an project in the lecture Interaction in Virtual and Augmented Reality 2025/26.
 In the lecture we learned a lot about VR/AR/XR and what you can do to make pleasing projects in this field.
@@ -154,45 +154,64 @@ When you are about the reach a checkpoint or the finish line you have to do an i
 <p>The parkour tracks some statistics during a run. It tracks time, amount of collected coins and the accuracy of the interaction task.</p>
 <p>This blog is the documentation for my project. The structure is similar to a research paper. We have a problem statement, a solution, implementation details, an evaluation and a conclusion.</p>
 <h3 id="motivation">Motivation</h3>
-<p>A virtual or even augmented reality is an interesting field and opens a lot of new approaches for games or other applications. It motivates you to use your whole body while playing. And if you are using your whole body already, why not make an extended controller? Use some external sensors or just mount the controllers of an head mounted display (HMD) on to something and make an interessting controller. This can increase the realism of your gameplay, especially when your making a kind of an simulation. This is what inspired and motivated me to to this project. And you can see exactly those things in my implementation.</p>
-<h2 id="2-problem-statement">2 Problem Statement</h2>
+<p>A virtual or even augmented reality is an interesting field and opens a lot of new approaches for games or other applications. It motivates you to use your whole body while playing. And if you are using your whole body already, why not make an extended controler? Use some external sensors or just mount the controlers of an head mounted display (HMD) on to something and make an interessting controler. This can increase the realism of your gameplay, especially when your making a kind of an simulation. This is what inspired and motivated me to to this project. And you can see exactly those things in my implementation.</p>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>I have to design and implement a new locomotion technique to absolve a parcour and complete some kind of an interaction task with object manipulation in VR.
 The given parcour and T-Shape manipulation are used, but the locomotion and interaction technique are newly implemented.
-For this my goal is to design an extended controller, holding at least one controller not in the hand and mounting it on something else which has to be interacted in the real life with instead.
-For this the extended controller has to be implemented in Unity to create an locomotion technique that is a kind of an simulation and feels realisitc and fun.
-The interaction task should also mainly be using the extended controller.
+For this my goal is to design an extended controler, holding at least one controler not in the hand and mounting it on something else which has to be interacted in the real life with instead.
+For this the extended controler has to be implemented in Unity to create an locomotion technique that is a kind of an simulation and feels realisitc and fun.
+The interaction task should also mainly be using the extended controler.
 Feeling safe during the usage of the locomotion and interaction technique is also a goal which should have a high priority. I want adaptions to minimize the possibility of hurting yourself where they are needed.</p>
 <h4 id="goals">Goals:</h4>
 <ul>
 <li>using the existing project and implementing new techniques for it</li>
-<li>making a creative, extended controller</li>
+<li>making a creative, extended controler</li>
 <li>making a technique that feels realistic</li>
 <li>making a technique that is fun to use</li>
 <li>making the technique safe and minimize the possibility of hurting yourself</li>
 </ul>
-<h2 id="3-solution">3 Solution</h2>
-<p>(Include early versions, sketches, and the final implementation)</p>
-<p>My project idea had to be something exciting. I did not want to just use the controllers normaly. My goal from the beginning on was to mount (at least one of) them on to something to create a unique controller which is not just held in hand. The real controler should only be used for tacking the positions and rotations.</p>
-<p>My first real idea was out of my own interests to mount a controller on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an &ldquo;Teleport&rdquo; Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.</p>
-<p>So the idea i went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
+<h2 id="solution-and-implementation-details">Solution and Implementation Details</h2>
+<p>(This project is made with Unity (Version 6000.0.60f1). The code is written in C#.
+Most of the code for my implementation is in the LocomotionTechnique script. I made minor changes in other scripts and made a few more especially for the interaction Task.)</p>
+<p>My project idea had to be something exciting. I did not want to just use the controlers normaly. My goal from the beginning on was to mount (at least one of) them on to something to create a unique controler which is not just held in hand. The real controler should only be used for tacking the positions and rotations.</p>
+<p>My first real idea was out of my own interests to mount a controler on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an &ldquo;Teleport&rdquo; Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.</p>
+<p>So the idea I went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
 My idea was a simulation of driving around the streets with a skateboard, with a real Skateboard.</p>
 <h3 id="steering">Steering</h3>
 <p>The most important part for my project is the Steering.
-So I made a first little prototype where I had a constant speed and only needed to tilt the left controller to the left and right to steer.
+So I made a first little prototype where I had a constant speed and only needed to tilt the left controler to the left and right to steer.
 I put it on my skateboard and tried if the movement with standing on the skateboard and steering like in real is good enough.
 When I saw that this worked well I settled on my skateboard idea.</p>
 <p>The idea for the steering is still the same in the final project.</p>
-<p>todo???
-code???</p>
-<h3 id="modifying-the-skateboard">Modifying the Skateboard</h3>
-<p>To use a skateboard as a extended controller indoors required some modifications.
-First I don not want to roll in real with it it should be stationary. I also do not want to damage the floor in my room. Then I also need to mount the controller in a reasonable and functional way onto the skateboard. Everything should be cheap.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/lIeEEDyCFQc?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p><a href="https://youtu.be/lIeEEDyCFQc">https://youtu.be/lIeEEDyCFQc</a></p>
+<p>Computing the Steering:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">float</span> ComputeSteerFromRollZ(Quaternion currentLocalRot)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Quaternion rel = Quaternion.Inverse(steerNeutralLocalRot) * currentLocalRot;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> roll = NormalizeAngle(rel.eulerAngles.z);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> raw = Mathf.Clamp(roll / Mathf.Max(<span style="color:#ae81ff">0.01f</span>, maxLeanDegrees), -<span style="color:#ae81ff">1f</span>, <span style="color:#ae81ff">1f</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> abs = Mathf.Abs(raw);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (abs &lt; steerDeadzone) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0f</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> sign = Mathf.Sign(raw);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">float</span> t = (abs - steerDeadzone) / Mathf.Max(<span style="color:#ae81ff">0.0001f</span>, (<span style="color:#ae81ff">1f</span> - steerDeadzone));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sign * Mathf.Clamp01(t);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h3 id="modifying-the-skateboard">Modifying the Skateboard</h3>
+<p>To use a skateboard as a extended controler indoors required some modifications.
+First I don not want to roll in real with it it should be stationary. I also do not want to damage the floor in my room. Then I also need to mount the controler in a reasonable and functional way onto the skateboard. Everything should be cheap.</p>
 <p>I ended up taking the wheels of the skateboard of and exchanged them with tennis balls. That did not cost much, because I had some old tennis balls. The skateboard does not roll, does not damage the floor and can still be tilted normally. Other Ideas would not have achieved all these goals.</p>
-<p>I put the controller on an old plastic box and secured it slightly with stuff I had around for my first prototype</p>
+<p>I put the controler on an old plastic box and secured it slightly with stuff I had around for my first prototype</p>
 <p>Modified-Skateboard Prototype:
 <img src="/Blog/images/umbauproto.png" alt="Modified-Skateboard Prototype"></p>
 <p>I actually did not change much about this for the final version of the skateboard.
-I used some tape and cardbord to secure the tennis ball wheels more and to protect the floor. And I taped my plastic box tighly to the skateboard and put some foam in it to stabilize and protect the controller when it is inside it. The controller has to be secured in the box with a piece of tape. Other ideas would have had to high costs or required to much time and I decided that it is not important enough for my project here, since it does not have anything to do with the lecture and I will not be using it in the future. (I thought about 3D modelling and printing a case + mounting mechanic for putting it on the skateboard.)</p>
+I used some tape and cardbord to secure the tennis ball wheels more and to protect the floor. And I taped my plastic box tighly to the skateboard and put some foam in it to stabilize and protect the controler when it is inside it. The controler has to be secured in the box with a piece of tape. Other ideas would have had to high costs or required to much time and I decided that it is not important enough for my project here, since it does not have anything to do with the lecture and I will not be using it in the future. (I thought about 3D modelling and printing a case + mounting mechanic for putting it on the skateboard.)</p>
 <p>Modified-Skateboard now:
 <img src="/Blog/images/skate.png" alt="Modified-Skateboard"></p>
 <h3 id="accelerate-and-break">Accelerate and Break</h3>
@@ -202,11 +221,11 @@ So I wanted to do a real &ldquo;push-movement&rdquo; like its done on a real ska
 (Since I exchanged the wheels of the skateboard with tennis balls is it stationary but with it would still move with too much force.)</p>
 <p>My first problem with this part was figuring out to to track the leg movement.
 I looked up if foot and leg tracking is possible in unity with my given hardware.
-And I thought about how I could mount the controller that is not on the skateboard to the leg with not just wrapping tape around it every time.
+And I thought about how I could mount the controler that is not on the skateboard to the leg with not just wrapping tape around it every time.
 I settled on an Idea involving two elastic belts, a small and a large one, and an carabiner hook.</p>
 <p>The equipment
 <img src="/Blog/images/belt.png" alt="Stuff"></p>
-<p>The big belt is laid around the waist with the carabiner hook on it. Then the wrist strap of the controller is put on the carabiner hook, and the controller laid on the leg. Then the small belt is laid around the leg and securing the controller to it. This worked surprisingly well even with bigger movements.</p>
+<p>The big belt is laid around the waist with the carabiner hook on it. Then the wrist strap of the controler is put on the carabiner hook, and the controler laid on the leg. Then the small belt is laid around the leg and securing the controler to it. This worked surprisingly well even with bigger movements.</p>
 <p>The applied equipment:
 <img src="/Blog/images/beltfront.png" alt="The applied equipment - front">
 <img src="/Blog/images/beltleft.png" alt="The applied equipment - side"></p>
@@ -214,7 +233,7 @@ I settled on an Idea involving two elastic belts, a small and a large one, and a
 Unfortunatly this method requires a &ldquo;swinging leg movement&rdquo; which challenges the balance of the user. And since I already learned during my first prototype tests that keeping the balance on a tilting skateboard with an head mounted display on, even with the window that shows your real feet snd skateboard enabled, is way harder than expected. So swinging your leg and changing its position between on the ground and on your skatebaord introduces more physical movement which increases the difficulty of keeping your balance enormous. And keeping the balance is not even the goal. You have also to controll the tilting angles of the skateboard precisely to take turns and controll it on the virtual street.
 So for the reason of increased level of danger and complicated controls I had to lay this idea off.</p>
 <p>I had other ideas like swinging arm movements like when you ski but was not very happy with them.</p>
-<p>My final idea was just using the right controller in the hand. The primary trigger is used to accelerate. This removes the real pushing feeling but it is similar to the acceleration on an Elekltro-Longboard/Skateboard. The Trigger can be pressed more or less to get a faster or slower acceleration.
+<p>My final idea was just using the right controler in the hand. The primary trigger is used to accelerate. This removes the real pushing feeling but it is similar to the acceleration on an Elekltro-Longboard/Skateboard. The Trigger can be pressed more or less to get a faster or slower acceleration.
 The skateboard slows down on its own like with real friction. But you can break manually with the secondary trigger aswell.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Beschleunigen mit primary trigger</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> trig = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger));
@@ -265,23 +284,18 @@ Because of the usage of a real skateboard in my project, balancing is quite impo
 <p>My approach on the interaction Task with the T-Shape was pretty simple.
 You have one T-Shape object that you have to fit as good as possible inside another T-Shape that is static and not movable.
 After that the offset of them is calculated which determines the score how good you where in this task. This was already given in the given project.
-For my implementation I mirrored the moveable T-Shape onto the controller which is mounted on the skateboard and mapped the position in relation to the controller, so that the T-Shape is alignet with the skateboard. With this setup the T-Shape in VR equals the skateboard in the real world. The goal of this implementattion of the task is picking the real skateboard up from the ground and holding it in the air according to the position and rotation of the target T-Shape.
-The position and rotation is locked in via an button press on the controller, which is not mounted on the skateboard.
+For my implementation I mirrored the moveable T-Shape onto the controler which is mounted on the skateboard and mapped the position in relation to the controler, so that the T-Shape is alignet with the skateboard. With this setup the T-Shape in VR equals the skateboard in the real world. The goal of this implementattion of the task is picking the real skateboard up from the ground and holding it in the air according to the position and rotation of the target T-Shape.
+The position and rotation is locked in via an button press on the controler, which is not mounted on the skateboard.
 The task spawns and starts automatically when its area is entered before reaching each checkpoint.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KYWbXxtEOxs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p><a href="https://youtu.be/KYWbXxtEOxs">https://youtu.be/KYWbXxtEOxs</a></p>
-<h2 id="4-implementation-details">4 Implementation Details</h2>
-<p>In this chapter I will show you some code. I will only talk about important and complex challenges here. The complete code is visible in my repository.</p>
-<p>This project is made with Unity (Version 6000.0.60f1). The code is written in C#.
-Most of the code for my implementation is in the LocomotionTechnique script. I made minor changes in other scripts and made a few more for the interaction Task.</p>
-<h3 id="object-interaction-task-1">Object Interaction Task</h3>
-<p>For the object interaction T-Shape Task, I used three scripts. I changed the existing SelectionTaskMeasure script and added one script for the left and one script for the right controller for this task.</p>
-<p>The script for the right controller contains only the button that needs to be pressed to lock your task in.
-The script for the left controller handles the attaching of the movable T-Shape to the left controller, so the T-Shape moves in VR according to the skateboard in real life.
-The important part happens in the SelectionTaskMeasure script. I changed that the Task starts when entering a collider ao it does not need to be started manually. For this I needed to change the Spawnpoint of the T-Shape. When entering the collider the locomotion stops and gets locked, the target T-Shape spawns and the moveable T-Shape gets attached to the left controller so that it is mirroring the real skateboard in VR.</p>
+<p>For the object interaction T-Shape Task, I used three scripts. I changed the existing SelectionTaskMeasure script and added one script for the left and one script for the right controler for this task.</p>
+<p>The script for the right controler contains only the button that needs to be pressed to lock your task in.
+The script for the left controler handles the attaching of the movable T-Shape to the left controler, so the T-Shape moves in VR according to the skateboard in real life.
+The important part happens in the SelectionTaskMeasure script. I changed that the Task starts when entering a collider ao it does not need to be started manually. For this I needed to change the Spawnpoint of the T-Shape. When entering the collider the locomotion stops and gets locked, the target T-Shape spawns and the moveable T-Shape gets attached to the left controler so that it is mirroring the real skateboard in VR.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> StartOneTask()
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isTaskStart || isCountdown) <span style="color:#66d9ef">return</span>;
@@ -318,15 +332,84 @@ The important part happens in the SelectionTaskMeasure script. I changed that th
 </span></span><span style="display:flex;"><span>        objectT = Instantiate(objectTPrefab, attacher.leftAttachPoint.position, attacher.leftAttachPoint.rotation);
 </span></span><span style="display:flex;"><span>        attacher.Attach(objectT);
 </span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KYWbXxtEOxs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+</span></span></code></pre></div><h3 id="drop-in-boost-and-jump">Drop-In-Boost and Jump</h3>
+<p>The last thing I added as a bonus feature was a boost that simulates dropping in with a skateboard on a ramp and a jump.
+To drop in you move your body weight to the tail, the back part of the skateboard, so the nose, the front part lifts up. Then you change your weight back to the middle/front so you make a rapid movement bringing the nose back down. Real skateboarders use this on ramps to get down with a lot of speed. I use that in my project to give a speed boost on a flat area.</p>
+<p>The Jump is done similary. To jump you have to move the nose up and down quickly aswell. The difference is the current speed. If you are stationary or real slow you get a boost. If you are already moving you make a jump.</p>
+<p>I implemented this with a small State-Machine that detects when the nose, the front part of the skateboard, is up.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Tail Drop und Jump detecten</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (hasNeutral  &amp;&amp; Time.time &gt;= ignoreTailUntil)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> pitch = GetTailPitchDeg(currentLocalRot);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (invertTailPitch) pitch = -pitch;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (!hasPrevTailPitch)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        prevTailPitchDeg = pitch;
+</span></span><span style="display:flex;"><span>        hasPrevTailPitch = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> pitchRate = (pitch - prevTailPitchDeg) / dt;
+</span></span><span style="display:flex;"><span>    prevTailPitchDeg = pitch;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// aktueller Fahr-Speed</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> planarSpeed = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.up).magnitude;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Steering deaktivieren solange Nose hoch/Bewegung aktiv</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Mathf.Abs(pitch) &gt;= steerLockAngleDeg)
+</span></span><span style="display:flex;"><span>        steerLockedUntil = Mathf.Max(steerLockedUntil, Time.time + steerLockHoldTime);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> cooldownOk = (Time.time - lastTailActionTime) &gt;= tailCooldown;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Arm: nur wenn Nose hoch genug</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (!tailArmed &amp;&amp; cooldownOk &amp;&amp; pitch &gt;= tailLiftAngleDeg)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        tailArmed = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Trigger: wenn armed + Nose runter + schnell genug</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (tailArmed)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> released = pitch &lt;= tailReleaseAngleDeg;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> droppingFast = pitchRate &lt;= -tailMinDownRateDegPerSec;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (released &amp;&amp; droppingFast)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (planarSpeed &lt;= planarSpeedBorder)
+</span></span><span style="display:flex;"><span>                pendingDropBoost += dropBoostDeltaV;     <span style="color:#75715e">// Drop-In (planar)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                pendingJumpUp += jumpUpDeltaV;          <span style="color:#75715e">// Jump (vertical)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            lastTailActionTime = Time.time;
+</span></span><span style="display:flex;"><span>            tailArmed = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// kurz Steering locken nach dem Snap</span>
+</span></span><span style="display:flex;"><span>            steerLockedUntil = Mathf.Max(steerLockedUntil, Time.time + steerLockHoldTime);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// disarm</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (pitch &lt; <span style="color:#ae81ff">0.5f</span> &amp;&amp; Mathf.Abs(pitchRate) &lt; <span style="color:#ae81ff">20f</span>)
+</span></span><span style="display:flex;"><span>            tailArmed = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Sometimes both features are a bit unreliable and can also provoke problems with the calibration.</p>
+<p>Drop-In-Boost:
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/18q2Tj87-ig?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
-<p><a href="https://youtu.be/KYWbXxtEOxs">https://youtu.be/KYWbXxtEOxs</a></p>
-<h2 id="5-evaluation">5 Evaluation</h2>
+<a href="https://youtu.be/18q2Tj87-ig">https://youtu.be/18q2Tj87-ig</a></p>
+<p>Jump:
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/TSjUHZE-M6s?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<a href="https://youtu.be/TSjUHZE-M6s">https://youtu.be/TSjUHZE-M6s</a></p>
+<h2 id="evaluation">Evaluation</h2>
 <h3 id="method-and-setup">Method and Setup</h3>
 <p>The evaluation for this Skateboard VR project consists of three parts and combines some qualitative and quantitative aspects.</p>
-<p>First every participant got an introduction to the project an explanation of the controlls and an demonstration of the parcour and its different parts.
+<p>First every participant got an introduction to the project an explanation of the controls and an demonstration of the parcour and its different parts.
 I recommended to not use the Drop-In-Boost or the Jump, since they can be a bit dangerous and trigger not always as aspected (for example when the movement is done to slow).</p>
 <p>Then everyone had a few trys (not more than 3 where needed) to do a complete run of the parcour.</p>
 <p>The parcour tracks time and score on its own. This data has been noted for every participant. This is the first part of the evaluation.</p>
@@ -354,7 +437,7 @@ I already have experience with VR/AR.
 It made me feel unwell. (Motion Sickness)
 (likert-7)</p>
 </blockquote>
-<p>Also I asked more directly about the controlls since the main part of this project was the locomotion technique.</p>
+<p>Also I asked more directly about the controls since the main part of this project was the locomotion technique.</p>
 <blockquote>
 <p>Ich hatte das Gefühl, die Bewegung gut zu kontrollieren.
 I felt I had good control over the movement.
@@ -415,77 +498,78 @@ It was added that putting the skateboard down after the T-Shape Task unlocks the
 <p>Adding velocity in spurts to get a more realistic feeling.
 The calibration could be better. The steering after the T-Shape Task should not be enabled rigth after, like mentioned in the difficulty answers.
 Also the logging in the T-Shape method was critiqued, it should be accepted automatically when the position is good enough.</p>
+<h3 id="statistics-of-the-parkour">Statistics of the parkour</h3>
+<img src="/Blog/images/stats.png" alt="The Survey">
+<p>The statistics of the parkour for every run look pretty good. Everyone had a few trys to get familiar with the controls. I tracked only the last/best score for every participant.
+Everyone managed to to the parcour in under 100 seconds. Most of them were not very interested in collecting all to coins and wanted to enjoy the feeling of virtual skatebaording instead. The interaction task went good aswell. My time statistics are the ones on the right side. My time is the fastest because of my experience I got while developing this.
+After getting used to it everyone had fun and was able to achieve similar scores.</p>
 <h3 id="interpretation-of-the-results">Interpretation of the results</h3>
-<p>Overall the feedback was quite positive. The steering is good and using the locomotion technique is very fun. Some motion sickness were felt but the physicall and mentally demand where low. The participants felt suprisingly safe, even without prior VR experience and even with the HMD on a skateboard on. There are some problems with the calibration, which could be different/better. The unlocking of the steering after the T-Shape Task happens to early which may lead t osome motion sickness and requires calibrating new every time.
+<p>Overall the feedback was quite positive and the statistics looked good. The steering is good and using the locomotion technique is very fun. Some motion sickness were felt but the physicall and mentally demand where low. The participants felt suprisingly safe, even without prior VR experience and even with the HMD on a skateboard on. There are some problems with the calibration, which could be different/better. The unlocking of the steering after the T-Shape Task happens to early which may lead to some motion sickness and requires calibrating new every time.
 Everyone had a fun experience and liked the project.</p>
-<h2 id="6-conclusion">6 Conclusion</h2>
-<p>(Did your system solve the problem? What did you learn?)</p>
-<h2 id="7-video">7 Video</h2>
-<p>(Record yourself using your techniques and completing the parkour at least once)</p>
-<p>Here can you see what it looks like to complete a run of on the given parkour with the here explained Skateboard XR locomotion technique and the implemented interaction method.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The Skateboard XR implementation as a new locomotion technique went pretty well. I was able to make an interesting an fun locomotion technique with an unusual style of controlling it. The feeling is pretty similar to skating on a real skateboard with some minor differences. But it felt overall pretty natural. My worries about safety were not that important. The participants felt quite safe and nobody was hurt during the evaluation (or during the development phase).
+There are still some possible improvements especially for preventing motion sickness.
+But overall I am happy and think i have reached my Goals from the problem statement.</p>
+<p>I learned a lot about implementing VR/AR applications. Some things are easier than I thought, like implementing a passthrough window via Meta Building Blocks. And with some things I got never in contact before while programming in Unity, like using the sensors of the controlers for tracking theyr rotations.</p>
+<p>It was a very fun and very different experience implementing this project.</p>
+<h2 id="video--controls">Video + Controls</h2>
+<p>Here can you see my complete run on the given parkour with the here explained Skateboard XR locomotion technique and the implemented interaction method.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IhXeS8tZ1xg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p><a href="https://youtu.be/IhXeS8tZ1xg">https://youtu.be/IhXeS8tZ1xg</a></p>
-<h2 id="8-ai">8 AI</h2>
-<p>If you used ai, we would like you to write one post about that as well. If you don&rsquo;t feel confident to post it on your website, please just send me and Jan an email containing that section. There will be no disadvantages for using ai. If you want, add parts of your chats. (Benefits, problems, did it work well?)</p>
-<img src="/Blog/images/controlls.png" alt="Mein Bild">
-<p>Hier ist mein C#-Beispiel:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Player</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Player(<span style="color:#66d9ef">string</span> name)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Name = name;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<p>Here are the controls explained:</p>
+<img src="/Blog/images/controlls.png" alt="Controls">
+<h2 id="ai">AI</h2>
+<p>I used ChatGPT in this Project to discuss my Ideas and the different methods I could use to implement those ideas.
+I used it mostly to substitude reading documentations an searching for anwsers on the internet.
+I used it also to help me find mistakes in my code but also let him write code and discussed it with it.
+The Code I got from ChatGPT was sometimes good but also often not working without changing a few things.
+Especially tweaking values is something I had to do on my own but ChatGPT was able to give me some ranges which could probably work.
+The spelling and grammar in this blog have also been checked with AI.</p>
+
   </main>
 
   
   <aside class="post-toc">
     <details class="toc-details" open>
-      <summary>Inhalt</summary>
+      <summary>Content</summary>
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-introduction--motivation">1 Introduction &amp; Motivation</a>
+    <li><a href="#introduction--motivation">Introduction &amp; Motivation</a>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#motivation">Motivation</a></li>
       </ul>
     </li>
-    <li><a href="#2-problem-statement">2 Problem Statement</a>
+    <li><a href="#problem-statement">Problem Statement</a>
       <ul>
         <li></li>
       </ul>
     </li>
-    <li><a href="#3-solution">3 Solution</a>
+    <li><a href="#solution-and-implementation-details">Solution and Implementation Details</a>
       <ul>
         <li><a href="#steering">Steering</a></li>
         <li><a href="#modifying-the-skateboard">Modifying the Skateboard</a></li>
         <li><a href="#accelerate-and-break">Accelerate and Break</a></li>
         <li><a href="#ar---a-window-to-the-real-world">AR - a window to the real world</a></li>
         <li><a href="#object-interaction-task">Object Interaction Task</a></li>
+        <li><a href="#drop-in-boost-and-jump">Drop-In-Boost and Jump</a></li>
       </ul>
     </li>
-    <li><a href="#4-implementation-details">4 Implementation Details</a>
-      <ul>
-        <li><a href="#object-interaction-task-1">Object Interaction Task</a></li>
-      </ul>
-    </li>
-    <li><a href="#5-evaluation">5 Evaluation</a>
+    <li><a href="#evaluation">Evaluation</a>
       <ul>
         <li><a href="#method-and-setup">Method and Setup</a></li>
         <li><a href="#results-for-the-first-eight-questions">Results for the first eight questions</a></li>
         <li><a href="#short-summary-of-the-text-based-answers">Short summary of the text-based Answers</a></li>
+        <li><a href="#statistics-of-the-parkour">Statistics of the parkour</a></li>
         <li><a href="#interpretation-of-the-results">Interpretation of the results</a></li>
       </ul>
     </li>
-    <li><a href="#6-conclusion">6 Conclusion</a></li>
-    <li><a href="#7-video">7 Video</a></li>
-    <li><a href="#8-ai">8 AI</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#video--controls">Video + Controls</a></li>
+    <li><a href="#ai">AI</a></li>
   </ul>
 </nav>
     </details>
@@ -496,7 +580,7 @@ Everyone had a fun experience and liked the project.</p>
   class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
   <div class="mr-auto">&copy;2026
-    <a class="link" href="http://localhost:1313/Blog/">P - BLOG</a></div>
+    <a class="link" href="http://localhost:1313/Blog/">BLOG von Philipp L.</a></div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
     >powered by hugo️️</a
   >️

@@ -1,6 +1,6 @@
 baseURL = 'https://lauphie.github.io/Blog/'
 languageCode = 'en-us'
-title = 'P - BLOG'
+title = 'BLOG von Philipp L.'
 theme = 'paper'
 
 [caches]

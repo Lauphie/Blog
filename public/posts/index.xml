@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on P - BLOG</title>
+    <title>Posts on BLOG von Philipp L.</title>
     <link>http://localhost:1313/Blog/posts/</link>
-    <description>Recent content in Posts on P - BLOG</description>
+    <description>Recent content in Posts on BLOG von Philipp L.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Nov 2025 11:24:14 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 11:24:14 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/Blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Interaction in Virtual and Augmented Reality 2025/26</title>
       <link>http://localhost:1313/Blog/posts/hello/</link>
-      <pubDate>Thu, 20 Nov 2025 11:24:14 +0100</pubDate>
+      <pubDate>Sun, 15 Mar 2026 11:24:14 +0100</pubDate>
       <guid>http://localhost:1313/Blog/posts/hello/</guid>
-      <description>&lt;p&gt;Implementing an interaction and locomotion project.&lt;/p&gt;&#xA;&lt;h1 id=&#34;skateboard-xr&#34;&gt;Skateboard XR&lt;/h1&gt;&#xA;&lt;h2 id=&#34;1-introduction--motivation&#34;&gt;1 Introduction &amp;amp; Motivation&lt;/h2&gt;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;This blog is a documentation for an project in the lecture Interaction in Virtual and Augmented Reality 2025/26.&#xA;In the lecture we learned a lot about VR/AR/XR and what you can do to make pleasing projects in this field.&#xA;To get a grade we were requiered to develop and implement a new locomotion technique and some kind of an interaction Task.&#xA;For this we got an project with a map and an easy example Solution to have a little reference and see what we have to do.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Markdown Syntax Guide</title>
-      <link>http://localhost:1313/Blog/posts/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/Blog/posts/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Rich Content</title>
-      <link>http://localhost:1313/Blog/posts/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/Blog/posts/rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;&#xA;&lt;h2&gt;&lt;/h2&gt;</description>
+      <description>&lt;p&gt;Implementing an interaction and locomotion project.&lt;/p&gt;&#xA;&lt;h1 id=&#34;skateboard-xr&#34;&gt;Skateboard XR&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction--motivation&#34;&gt;Introduction &amp;amp; Motivation&lt;/h2&gt;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;This blog is a documentation for an project in the lecture Interaction in Virtual and Augmented Reality 2025/26.&#xA;In the lecture we learned a lot about VR/AR/XR and what you can do to make pleasing projects in this field.&#xA;To get a grade we were requiered to develop and implement a new locomotion technique and some kind of an interaction Task.&#xA;For this we got an project with a map and an easy example Solution to have a little reference and see what we have to do.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
