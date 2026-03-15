@@ -11,67 +11,88 @@ Implementing an interaction and locomotion project.
 ## Introduction & Motivation
 
 ### Introduction
-This blog is a documentation for an project in the lecture Interaction in Virtual and Augmented Reality 2025/26.
-In the lecture we learned a lot about VR/AR/XR and what you can do to make pleasing projects in this field.
-To get a grade we were requiered to develop and implement a new locomotion technique and some kind of an interaction Task.
-For this we got an project with a map and an easy example Solution to have a little reference and see what we have to do.
+This blog post documents a project for the lecture *Interaction in Virtual and Augmented Reality* (2025/26).
+
+In this lecture, we learned a lot about VR, AR, and XR, as well as how to create engaging projects in this field.
+To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task.
+
+For this purpose, we were given a project containing a map and a simple example solution to serve as a reference and help us understand what we had to do.
 
 {{< img src="images/parkour.png" alt="The parkour" >}}
 
-The map shows a little city with an parkour that has to be completed with the new locomotion technique.
-The parkour follows a street on with are coins placed that you can collect on your run. The parkour contains a starting position and twoo checkpoints and an finish line.
-When you are about the reach a checkpoint or the finish line you have to do an interaction Task. Some form of manipulating the position and rotation of a given, moveable T-Shape to fit inside an target T-Shape.
+The map shows a small city with a parkour that has to be completed using the new locomotion technique.
 
-{{< img src="images/tshapeTask.png" alt="The interaction Task - T-Shape manipulation" >}}
+The parkour follows a street along which coins are placed that can be collected during the run. It contains a starting position, two checkpoints, and a finish line.
 
-The parkour tracks some statistics during a run. It tracks time, amount of collected coins and the accuracy of the interaction task.
+Whenever you reach a checkpoint or the finish line, you have to complete an interaction task. This task involves manipulating the position and rotation of a movable T-shape so that it fits inside a target T-shape.
 
-This blog is the documentation for my project. The structure is similar to a research paper. We have a problem statement, a solution, implementation details, an evaluation and a conclusion.
+{{< img src="images/tshapeTask.png" alt="The interaction task - T-shape manipulation" >}}
+
+The parkour tracks several statistics during a run, including the time, the number of collected coins, and the accuracy of the interaction task.
+
+This blog post serves as the documentation for my project. Its structure is similar to that of a research paper: it includes a problem statement, a proposed solution, implementation details, an evaluation, and a conclusion.
+
+ 
 
 ### Motivation
 
-A virtual or even augmented reality is an interesting field and opens a lot of new approaches for games or other applications. It motivates you to use your whole body while playing. And if you are using your whole body already, why not make an extended controler? Use some external sensors or just mount the controlers of an head mounted display (HMD) on to something and make an interessting controler. This can increase the realism of your gameplay, especially when your making a kind of an simulation. This is what inspired and motivated me to to this project. And you can see exactly those things in my implementation. 
- 
+Virtual and augmented reality are fascinating fields that open up many new possibilities for games and other applications. They encourage players to use their whole body while interacting with a system.
+
+If the whole body is already involved, why not extend the controller as well? External sensors can be used, or the controllers of a head-mounted display (HMD) can be attached to another object to create a more interesting input device.
+
+This can increase the realism of the gameplay, especially in simulation-like applications.
+
+These ideas inspired and motivated me to work on this project, and they are clearly reflected in my implementation.
+
 
 
 ## Problem Statement
 
-I have to design and implement a new locomotion technique to absolve a parcour and complete some kind of an interaction task with object manipulation in VR.
-The given parcour and T-Shape manipulation are used, but the locomotion and interaction technique are newly implemented.
-For this my goal is to design an extended controler, holding at least one controler not in the hand and mounting it on something else which has to be interacted in the real life with instead.
-For this the extended controler has to be implemented in Unity to create an locomotion technique that is a kind of an simulation and feels realisitc and fun.
-The interaction task should also mainly be using the extended controler.
-Feeling safe during the usage of the locomotion and interaction technique is also a goal which should have a high priority. I want adaptions to minimize the possibility of hurting yourself where they are needed.
+I have to design and implement a new locomotion technique to complete a parkour and design an interaction task involving object manipulation in VR.
+
+The given parkour and T-shape manipulation task are used, but the locomotion and interaction techniques are newly implemented.
+
+My goal is to design an extended controller by holding at least one controller not directly in the hand, but instead mounting it onto another object that has to be used in real life.
+This extended controller then has to be implemented in Unity to create a locomotion technique that resembles a simulation and feels realistic and fun.
+
+The interaction task should also mainly be performed using the extended controller.
+
+Ensuring safety during the use of the locomotion and interaction technique is also an important goal and should have high priority. I want to make adaptations wherever necessary to minimize the risk of injury.
 
 #### Goals:
 
-- using the existing project and implementing new techniques for it
-- making a creative, extended controler
-- making a technique that feels realistic
-- making a technique that is fun to use
-- making the technique safe and minimize the possibility of hurting yourself  
+- use the existing project and implement new techniques for it
+- create a creative extended controller
+- develop a technique that feels realistic
+- develop a technique that is fun to use
+- make the technique safe and minimize the risk of injury
+
+
 
 ## Solution and Implementation Details
-(This project is made with Unity (Version 6000.0.60f1). The code is written in C#.
-Most of the code for my implementation is in the LocomotionTechnique script. I made minor changes in other scripts and made a few more especially for the interaction Task.)
 
+(This project was developed in Unity, version 6000.0.60f1. The code is written in C#. Most of the code for my implementation is contained in the `LocomotionTechnique` script. I made minor changes to other scripts and created a few additional ones.)
 
-My project idea had to be something exciting. I did not want to just use the controlers normaly. My goal from the beginning on was to mount (at least one of) them on to something to create a unique controler which is not just held in hand. The real controler should only be used for tacking the positions and rotations.
+My project idea had to be something exciting. I did not want to simply use the controllers in the usual way. From the very beginning, my goal was to mount at least one of them onto an object in order to create a unique controller that is not just held in the hand. The real controller should only be used to track positions and rotations.
 
-My first real idea was out of my own interests to mount a controler on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an "Teleport" Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.
+My first serious idea, inspired by my own interests, was to mount a controller onto a frisbee and use a throwing motion, or even an actual throw (although I have no idea how I could have made that safe for the hardware), to track and simulate the flight. Another variation of this idea was to keep holding the frisbee in the hand and control the flight path by moving and tilting it. However, this would have resulted in a teleportation technique, where the locomotion consists of teleporting to the landing point of the frisbee, which was not the kind of technique I wanted to use.
 
-So the idea I went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
-My idea was a simulation of driving around the streets with a skateboard, with a real Skateboard.
+I still wanted to implement some kind of sport so that users could have fun in a way they enjoy, even during the winter months, when going outside is not always enjoyable or even possible for certain sports.
+
+So, the idea I ultimately chose became a simulation: a simulation of something that requires the use of the whole body and an implementation that is quite unique as an input method for a game.
+
+My final idea was to simulate riding through the streets on a skateboard by using a real skateboard.
+
 
 
 ### Steering
 
-The most important part for my project is the Steering. 
-So I made a first little prototype where I had a constant speed and only needed to tilt the left controler to the left and right to steer.
-I put it on my skateboard and tried if the movement with standing on the skateboard and steering like in real is good enough. 
-When I saw that this worked well I settled on my skateboard idea.
+The most important part of my project is the steering.
+To test this, I created a small initial prototype with a constant speed, where steering was done by tilting the left controller to the left or right.
+I attached the controller to my skateboard and tested whether standing on the skateboard and steering in a realistic way would work well enough.
+Once I saw that this approach worked well, I decided to pursue the skateboard idea further.
 
-The idea for the steering is still the same in the final project.
+The core idea behind the steering remained the same in the final project.
 
 
 {{< youtube lIeEEDyCFQc >}}
@@ -98,54 +119,54 @@ Computing the Steering:
 
 ### Modifying the Skateboard
 
-To use a skateboard as a extended controler indoors required some modifications.
-First I don not want to roll in real with it it should be stationary. I also do not want to damage the floor in my room. Then I also need to mount the controler in a reasonable and functional way onto the skateboard. Everything should be cheap.
+Using a skateboard as an extended controller indoors required some modifications.
 
-I ended up taking the wheels of the skateboard of and exchanged them with tennis balls. That did not cost much, because I had some old tennis balls. The skateboard does not roll, does not damage the floor and can still be tilted normally. Other Ideas would not have achieved all these goals.
+First, I did not want it to roll in real life; it had to remain stationary. I also did not want to damage the floor in my room. In addition, I needed to mount the controller onto the skateboard in a reasonable and functional way. Everything also had to be inexpensive.
 
-I put the controler on an old plastic box and secured it slightly with stuff I had around for my first prototype
+I ended up removing the wheels from the skateboard and replacing them with tennis balls. This did not cost much, because I already had some old tennis balls. The skateboard no longer rolls, does not damage the floor, and can still be tilted normally. Other ideas would not have achieved all of these goals at the same time.
+
+For my first prototype, I placed the controller in an old plastic box and secured it lightly with materials I already had at home.
 
 Modified-Skateboard Prototype:
 {{< img src="images/umbauproto.png" alt="Modified-Skateboard Prototype" >}}
 
+I did not change much about this setup for the final version of the skateboard. I used some tape and cardboard to secure the tennis-ball wheels more firmly and to further protect the floor. I also taped the plastic box tightly to the skateboard and added some foam inside it to stabilize and protect the controller when it was placed inside. The controller itself had to be secured in the box with a piece of tape.
 
-I actually did not change much about this for the final version of the skateboard.
-I used some tape and cardbord to secure the tennis ball wheels more and to protect the floor. And I taped my plastic box tighly to the skateboard and put some foam in it to stabilize and protect the controler when it is inside it. The controler has to be secured in the box with a piece of tape. Other ideas would have had to high costs or required to much time and I decided that it is not important enough for my project here, since it does not have anything to do with the lecture and I will not be using it in the future. (I thought about 3D modelling and printing a case + mounting mechanic for putting it on the skateboard.)
+Other ideas would have been too expensive or would have required too much time, so I decided that this aspect was not important enough for this project, since it was not directly related to the lecture and I would not be using it in the future. One alternative I considered was designing and 3D-printing a custom case and mounting mechanism for attaching the controller to the skateboard.
 
 Modified-Skateboard now:
 {{< img src="images/skate.png" alt="Modified-Skateboard" >}}
 
 
+### Acceleration and Braking
+Another major design challenge, for which I explored many different concepts, was the question of how to implement acceleration.
 
-### Accelerate and Break
-A big design challenge where I also had many concept ideas about is the question of how to accelerate.
+At first, I wanted the acceleration to work in the same way as on a real skateboard. My idea was to reproduce a real pushing movement, similar to the motion used on an actual skateboard, but without applying the pressure and force to the ground that would normally move the rider forward. Since I had replaced the skateboard wheels with tennis balls, the board remained stationary, although with enough force it could still shift slightly.
 
-My wish was at first having the acceleration be done in the same way it is done on a real skateboard.
-So I wanted to do a real "push-movement" like its done on a real skateboard just without the pressure and force on the ground that would move you forward.
-(Since I exchanged the wheels of the skateboard with tennis balls is it stationary but with it would still move with too much force.)
+The first problem with this approach was determining how to track the leg movement. I investigated whether foot and leg tracking would be possible in Unity with the hardware available to me. I also considered how to attach the controller that was not mounted on the skateboard to the leg without simply wrapping tape around it every time. I eventually came up with a solution involving two elastic straps (belts), one small and one large, as well as a carabiner hook.
 
-My first problem with this part was figuring out to to track the leg movement.
-I looked up if foot and leg tracking is possible in unity with my given hardware.
-And I thought about how I could mount the controler that is not on the skateboard to the leg with not just wrapping tape around it every time.
-I settled on an Idea involving two elastic belts, a small and a large one, and an carabiner hook. 
-
-The equipment
+The equipment:
 {{< img src="images/belt.png" alt="Stuff" >}}
 
-The big belt is laid around the waist with the carabiner hook on it. Then the wrist strap of the controler is put on the carabiner hook, and the controler laid on the leg. Then the small belt is laid around the leg and securing the controler to it. This worked surprisingly well even with bigger movements.
+
+The larger strap was placed around the waist, with the carabiner attached to it. The wrist strap of the controller was then hooked onto the carabiner, and the controller itself was positioned on the leg. After that, the smaller strap was wrapped around the leg to secure the controller in place. This setup worked surprisingly well, even during larger movements.
+
 
 The applied equipment:
 {{< img src="images/beltfront.png" alt="The applied equipment - front" >}}
 {{< img src="images/beltleft.png" alt="The applied equipment - side" >}}
 
-But before I even implemented this method of accelerating I discovered another big problem for my technique.
-Unfortunatly this method requires a "swinging leg movement" which challenges the balance of the user. And since I already learned during my first prototype tests that keeping the balance on a tilting skateboard with an head mounted display on, even with the window that shows your real feet snd skateboard enabled, is way harder than expected. So swinging your leg and changing its position between on the ground and on your skatebaord introduces more physical movement which increases the difficulty of keeping your balance enormous. And keeping the balance is not even the goal. You have also to controll the tilting angles of the skateboard precisely to take turns and controll it on the virtual street.
-So for the reason of increased level of danger and complicated controls I had to lay this idea off.
 
-I had other ideas like swinging arm movements like when you ski but was not very happy with them.
+However, before I implemented this acceleration method, I discovered another major problem with the technique. Unfortunately, this method required a swinging leg movement, which made balancing much more difficult for the user. During my first prototype tests, I had already learned that maintaining balance on a tilting skateboard while wearing a head-mounted display was far more difficult than expected, even when the passthrough view showing the real feet and skateboard was enabled.
 
-My final idea was just using the right controler in the hand. The primary trigger is used to accelerate. This removes the real pushing feeling but it is similar to the acceleration on an Elekltro-Longboard/Skateboard. The Trigger can be pressed more or less to get a faster or slower acceleration. 
-The skateboard slows down on its own like with real friction. But you can break manually with the secondary trigger aswell.
+Swinging one leg and repeatedly changing its position between the ground and the skateboard introduced additional physical movement, which greatly increased the difficulty of maintaining balance. However, balance alone was not the only challenge. The user also had to control the tilt angles of the skateboard precisely in order to steer and stay on the virtual street. Because of the increased danger and the more complicated controls, I had to discard this idea.
+
+I also considered other concepts, such as arm-swinging movements similar to those used in skiing, but I was not satisfied with them.
+
+My final solution was to simply use the right controller in the hand. The primary trigger is used to accelerate. Although this removes the feeling of physically pushing off the ground, it is somewhat similar to acceleration on an electric longboard or skateboard. The trigger can be pressed to different degrees in order to control the strength of the acceleration.
+
+The skateboard slows down on its own, similar to how real friction would reduce speed. However, the user can also brake manually by using the secondary trigger.
+
 
 ```csharp
 // Beschleunigen mit primary trigger
@@ -184,48 +205,53 @@ if (grip > 0f)
 ```
 
 
-### AR - a window to the real world
+### AR - A Window to the Real World
 
-This project benefits from the passthrough possibility of the Meta Quest 3. Having the possobility of adding a window in the VR-world in which you can see the real world is great, esspecially if there is a potential danger of hurting yourself while using the application.
-Because of the usage of a real skateboard in my project, balancing is quite important, but balancing on a skateboard is not the easiest thing. And if you add blindness to the real world with using a HMD it gets even worse which increases the potential of hurting yourself. For that reason I added a portal like window under the player showing the real world.
+This project benefits from the passthrough capability of the Meta Quest 3. The possibility of adding a window to the virtual world through which the real world can be seen is especially useful when there is a potential risk of injury while using the application.
+
+Because my project involves the use of a real skateboard, maintaining balance is very important. However, balancing on a skateboard is already not easy, and wearing a head-mounted display (HMD), which blocks the view of the real world, makes it even more difficult. This further increases the potential risk of injury. For this reason, I added a portal-like window beneath the player that shows the real world.
+
 
 Real world window concept art:
 {{< img src="images/ar_konzept.png" alt="Real world window concept art" >}}
 
-The idea was that it would be easier to balance if you can see your own feet and the skateboard. After implementing it the reality was, that this is not helping at all. You normaly do not look a loot so much on your feet and even if you do, you do not feel exactly the same way on a skateboard as you do without a headset on even with passthrough enabled. I still let the feature of seeing the real world when you look down in this project, because it is not disturbing the virtual reality feeling that much and even if it does not help with keeping your balance that much it actually helps in moments you might actually fell and it felt safer with this feature implemented. 
+
+The idea was that balancing would become easier if the user could see their own feet and the skateboard. After implementing it, however, I found that this did not help as much as expected. Normally, people do not look at their feet very often, and even when they do, standing on a skateboard while wearing a headset does not feel exactly the same as without one, even with passthrough enabled. I still decided to keep this feature in the project, because it does not disturb the feeling of virtual reality too much. In addition, even if it does not significantly improve balance, it helps in moments when the user might actually fall, and overall it made the experience feel safer. Also it is somehow useful for the object interaction task that is explained later in this blog post.
 
 In-Game view:
 {{< img src="images/ar_impl.png" alt="In-Game view" >}}
 
-For implementing it I just used an building block from the Meta XR Tools. I also wrote a short script so it beaves as I wanted it to. It is moving always with the position of the HMD and being beneath the player.
+
+To implement this feature, I used a building block from the Meta XR Tools. I also wrote a short script so that it behaved exactly as I wanted: it always follows the position of the HMD and remains beneath the player.
 
 The passthrough window in Unity:
 {{< img src="images/ar_unity.png" alt="The passthrough window in Unity" >}}
 
 
-Holding onto something while standing on the skateboard with the head-mounted display (HMD) on is still recommendet!
-
+Holding onto something while standing on the skateboard with the head-mounted display on is still strongly recommended.
 
 
 ### Object Interaction Task
 
-My approach on the interaction Task with the T-Shape was pretty simple.
-You have one T-Shape object that you have to fit as good as possible inside another T-Shape that is static and not movable.
-After that the offset of them is calculated which determines the score how good you where in this task. This was already given in the given project.
-For my implementation I mirrored the moveable T-Shape onto the controler which is mounted on the skateboard and mapped the position in relation to the controler, so that the T-Shape is alignet with the skateboard. With this setup the T-Shape in VR equals the skateboard in the real world. The goal of this implementattion of the task is picking the real skateboard up from the ground and holding it in the air according to the position and rotation of the target T-Shape.
-The position and rotation is locked in via an button press on the controler, which is not mounted on the skateboard.
-The task spawns and starts automatically when its area is entered before reaching each checkpoint.
+My approach to the T-shape interaction task was relatively simple.
+
+There is one movable T-shape object that has to be fitted as accurately as possible into another T-shape that is static and cannot be moved. After that, the offset between the two shapes is calculated, which determines the score for how well the task was completed. This functionality was already provided in the given project.
+
+For my implementation, I mirrored the movable T-shape onto the controller that is mounted on the skateboard and mapped its position relative to the controller so that the T-shape is aligned with the skateboard. With this setup, the T-shape in VR corresponds to the skateboard in the real world. The goal of this implementation is to pick up the real skateboard from the ground and hold it in the air so that its position and rotation match those of the target T-shape.
+
+The position and rotation are confirmed by pressing a button on the controller that is not mounted on the skateboard. The task spawns and starts automatically when the corresponding area is entered before reaching each checkpoint.
+
 
 {{< youtube KYWbXxtEOxs >}}
 
 https://youtu.be/KYWbXxtEOxs
 
 
-For the object interaction T-Shape Task, I used three scripts. I changed the existing SelectionTaskMeasure script and added one script for the left and one script for the right controler for this task.
+For the T-shape object interaction task, I used three scripts. I modified the existing `SelectionTaskMeasure` script and added one script for the left controller and one for the right controller specifically for this task.
 
-The script for the right controler contains only the button that needs to be pressed to lock your task in.
-The script for the left controler handles the attaching of the movable T-Shape to the left controler, so the T-Shape moves in VR according to the skateboard in real life.
-The important part happens in the SelectionTaskMeasure script. I changed that the Task starts when entering a collider ao it does not need to be started manually. For this I needed to change the Spawnpoint of the T-Shape. When entering the collider the locomotion stops and gets locked, the target T-Shape spawns and the moveable T-Shape gets attached to the left controler so that it is mirroring the real skateboard in VR.
+The script for the right controller only contains the button input that is used to confirm the task result. The script for the left controller handles attaching the movable T-shape to the left controller so that the T-shape in VR moves according to the skateboard in real life.
+
+The most important part is implemented in the `SelectionTaskMeasure` script. I changed the task so that it starts when the player enters a collider, meaning that it no longer has to be started manually. For this, I also needed to change the spawn point of the T-shape. When the collider is entered, the locomotion stops and becomes locked, the target T-shape spawns, and the movable T-shape is attached to the left controller so that it mirrors the real skateboard in VR.
 
 
 ```csharp
@@ -267,15 +293,24 @@ public void StartOneTask()
     }
 ```
 
+### Drop-In Boost and Jump
 
-### Drop-In-Boost and Jump
+The last feature I added as a bonus was a boost that simulates dropping in on a ramp with a skateboard, as well as a jump mechanic.
 
-The last thing I added as a bonus feature was a boost that simulates dropping in with a skateboard on a ramp and a jump.
-To drop in you move your body weight to the tail, the back part of the skateboard, so the nose, the front part lifts up. Then you change your weight back to the middle/front so you make a rapid movement bringing the nose back down. Real skateboarders use this on ramps to get down with a lot of speed. I use that in my project to give a speed boost on a flat area.
+To perform a drop-in, you shift your body weight to the tail, the back part of the skateboard, so that the nose, the front part, lifts up. Then you shift your weight back toward the middle or front, creating a rapid movement that brings the nose back down. Real skateboarders use this movement on ramps to drop in with a lot of speed. In my project, I use this movement to provide a speed boost on flat ground.
 
-The Jump is done similary. To jump you have to move the nose up and down quickly aswell. The difference is the current speed. If you are stationary or real slow you get a boost. If you are already moving you make a jump.
+Drop-In-Boost:
+{{< youtube 18q2Tj87-ig >}}
+https://youtu.be/18q2Tj87-ig
 
-I implemented this with a small State-Machine that detects when the nose, the front part of the skateboard, is up.
+The jump is implemented the same way. To jump, the user also has to move the nose up and down quickly. The difference lies in the current speed: if the skateboard is stationary or moving very slowly, this movement results in a boost. If the skateboard is already moving, it triggers a jump instead.
+
+Jump:
+{{< youtube TSjUHZE-M6s >}}
+https://youtu.be/TSjUHZE-M6s
+
+I implemented this behavior using a small state machine that detects when the nose, the front part of the skateboard, is raised.
+
 
 ```csharp
 // Tail Drop und Jump detecten
@@ -336,35 +371,24 @@ if (hasNeutral  && Time.time >= ignoreTailUntil)
 }
 ```
 
-Sometimes both features are a bit unreliable and can also provoke problems with the calibration. 
-
-Drop-In-Boost:
-{{< youtube 18q2Tj87-ig >}}
-https://youtu.be/18q2Tj87-ig
-
-
-Jump:
-{{< youtube TSjUHZE-M6s >}}
-https://youtu.be/TSjUHZE-M6s
-
-
+At the moment, both features are still somewhat unreliable and can also cause calibration problems in some cases.
 
 
 ## Evaluation
 
 ### Method and Setup
-The evaluation for this Skateboard VR project consists of three parts and combines some qualitative and quantitative aspects.
+The evaluation of this *Skateboard VR* project consists of three parts and combines both qualitative and quantitative aspects.
 
-First every participant got an introduction to the project an explanation of the controls and an demonstration of the parcour and its different parts.
-I recommended to not use the Drop-In-Boost or the Jump, since they can be a bit dangerous and trigger not always as aspected (for example when the movement is done to slow).
+First, every participant received an introduction to the project, an explanation of the controls, and a demonstration of the parkour course and its different elements. I recommended not using the drop-in boost or the jump, since these features can be somewhat dangerous and do not always trigger as intended, for example when the movement is performed too slowly. I also reduced the maximum speed beforehand, since it improves the usability for inexperienced participants a lot.
 
-Then everyone had a few trys (not more than 3 where needed) to do a complete run of the parcour.
+After that, each participant had a few attempts to complete the course. No one needed more than three attempts to finish a full run. Sometimes they got stuck or fell of the map in the beginning.
+After getting used to the locomotion technique, everything went well.
 
-The parcour tracks time and score on its own. This data has been noted for every participant. This is the first part of the evaluation.
+The course automatically tracks the completion time, collected coins during the locomotion parts and the score of the interaction tasks. This data was recorded for every participant and formed the first part of the evaluation.
 
-After completing the parcour everyone filled in a little questionnaire.
-The questionnaire consists of two parts. The first part consists of eight questions and uses a likert-7 scale to get a precise feedback.
-Some of the questions are inspired by the NASA-TLX since this questionaire fits the testing of a new locomotion technique very well. To keep this Survey short I decided to just set on the points of physical and mental demand of the NASA-TLX.
+After completing the course, each participant filled out a short questionnaire.
+
+The questionnaire consisted of two parts. The first part contained eight questions and used a 7-point Likert scale in order to obtain more precise feedback. Some of the questions were inspired by the NASA-TLX, since this questionnaire is well suited for evaluating a new locomotion technique. To keep the survey short, I decided to focus only on the aspects of physical and mental demand from the NASA-TLX.
 
 > Ich fand die Steuerung körperlich anstrengend.
 > The controls were physically demanding.
@@ -375,7 +399,7 @@ Some of the questions are inspired by the NASA-TLX since this questionaire fits 
 > (likert-7)
 
 
-I added some other questions that are directed more to the VR aspect of this application.
+I added some further questions that were more specifically related to the VR aspect of the application.
 
 > Ich habe bereits Erfahrung mit VR/AR.
 > I already have experience with VR/AR.
@@ -387,7 +411,7 @@ I added some other questions that are directed more to the VR aspect of this app
 > (likert-7)
 
 
-Also I asked more directly about the controls since the main part of this project was the locomotion technique.
+In addition, I asked more directly about the controls, since the locomotion technique was the central part of this project.
 
 > Ich hatte das Gefühl, die Bewegung gut zu kontrollieren.
 > I felt I had good control over the movement.
@@ -398,22 +422,21 @@ Also I asked more directly about the controls since the main part of this projec
 > (likert-7)
 
 
-Since the danger of hurting yourself with my implementation of the locomotion technique was a big concern of mine during the development phase, which made me also add extra features, so at least I feel more safe, i had to ask that aswell.
+Because the risk of injury was one of my main concerns during the development phase, and also motivated me to add extra safety-related features so that the experience would feel safer, I considered it necessary to include a question about this aspect as well.
 
 > Ich habe mich während der Nutzung sicher gefühlt.
 > I felt safe while using it.
 > (likert-7)
 
 
-And last but not least I wanted to know if it made fun which is quite important for the overall experience.
+Last but not least, I wanted to know whether the experience was fun, since this is an important part of the overall user experience.
 
 > Es hat Spaß gemacht.
 > It was fun.
 > (likert-7)
 
 
-Add the end the survey contained three free text questions where the participants could write some more spcific answers.
-I asked about what felt good, what gave them the biggest problems, and what they would change. 
+At the end, the survey also contained three free-text questions in which the participants could provide more specific feedback. I asked what felt good, what caused the biggest problems, and what they would change.
 
 > Was hat sich gut angefühlt?
 > What felt good? 
@@ -428,88 +451,108 @@ I asked about what felt good, what gave them the biggest problems, and what they
 > (free-text response)
 
 
-All questions (likert-7 and free-text response) except the last one about what the participants would change were mandatory.
+All questions, both the Likert-scale items and the free-text responses, were mandatory except for the final question about what the participants would change.
 
-The particapants where me and four friends, so five people in total. This is not very informative, but it is sufficient for this project related to the lecture. The for the lecture required minimum were the creator and two more participants.
+The participants consisted of myself and four friends, resulting in a total of five participants. Although this sample size is not highly informative, it is sufficient for this lecture project. The minimum requirement for the lecture was the creator plus two additional participants.
 
-### Results for the first eight questions
+### Results for the First Eight Questions
 
 {{< img src="images/survey.png" alt="The Survey" >}}
 
-First, the experiences differ, only two out of the five people have realy used VR/AR before.
-Three people felt some motion sickness, but it did not depend on prior experience.
-The controll over the movement was rated differently, but always good. The natural/realistic feal was rated even better.
-The physically demand was rated very low with no one thinking it was physically exhausting. The mentaly demand was rated differently but also rather not so exhausting.
-The question of feeling safe was answered very positiv with only my own opinion of thinking that it may be a bit dangereous, but that can be biased because I created it. 
-(Thats the reason why the creator should normaly not be a part of this own evaluation. For more openness are here my answers: 6, 5, 5, 5, 2, 3, 3, 7)
+First, the participants’ prior experience differed: only two of the five people had previously used VR or AR to a significant extent.
 
-### Short summary of the text-based Answers
+Three participants experienced some motion sickness, but this did not appear to depend on prior experience.
+
+The level of control over movement was rated differently by the participants, but always positively. The natural and realistic feeling of the locomotion technique was rated even better.
+
+The physical demand was rated as very low, and no participant considered the experience physically exhausting. The mental demand was rated more differently, but overall it was also considered rather low.
+
+The question of feeling safe was answered very positively. The only more critical response was my own, since I considered the technique to be somewhat dangerous. However, this may be biased because I created the project.
+(This is also the reason why the creator should normally not be part of their own evaluation. For the sake of transparency, these were my answers: 6, 5, 5, 5, 2, 3, 3, 7.)
+
+
+### Short Summary of the Text-Based Answers
+
 #### What felt good?
-The answers included the steering (left-right) five times (everyone mentioned it). The T-Shape task with lifting up the skateboard was mentioned once (by me). One person liked the Speedboost (Drop-In-Boost) and one person mentioned the immersion in VR.
+The answers mentioned the steering (left and right) five times, meaning that every participant referred to it. The T-shape task involving lifting the skateboard was mentioned once, by me. One person liked the speed boost (drop-in boost), and one person mentioned the immersion in VR.
 
 #### What was difficult?
-Sharp turns can be hard to do at first and colliding with objects led to problems. Both was mentioned once.
-There where calibration issues and putting the skateboard in the correct position, especially after the T-Shape Task. This was mentioned four times.
-It was added that putting the skateboard down after the T-Shape Task unlocks the steering to early, so you might spin while having the skateboard in the hands which leads to motion sickness. 
+Sharp turns were initially difficult to perform, and collisions with objects also caused problems. Both of these points were mentioned once.
+
+Calibration issues and placing the skateboard in the correct position, especially after the T-shape task, were mentioned four times.
+
+It was also noted that putting the skateboard down after the T-shape task unlocks the steering too early. As a result, the player may start spinning while still holding the skateboard in their hands, which can lead to motion sickness.
 
 #### What can be changed?
-Adding velocity in spurts to get a more realistic feeling.
-The calibration could be better. The steering after the T-Shape Task should not be enabled rigth after, like mentioned in the difficulty answers.
-Also the logging in the T-Shape method was critiqued, it should be accepted automatically when the position is good enough.
+One suggestion was to add acceleration in bursts to create a more realistic feeling. (Tapping the acceleration trigger instead of holding it already gives this effect.)
 
-### Statistics of the parkour
+The calibration could also be improved. In addition, the steering after the T-shape task should not be re-enabled immediately, as already mentioned in the answers about difficulties.
+
+The confirmation process in the T-shape task was also criticized. It was suggested that the result should be accepted automatically once the position is accurate enough. (I used the already given method which does not do this and therefore did not implement this idea beforehand even though I thought about it aswell.)
+
+
+### Statistics of the Parkour
+
 {{< img src="images/stats.png" alt="The Survey" >}}
 
-The statistics of the parkour for every run look pretty good. Everyone had a few trys to get familiar with the controls. I tracked only the last/best score for every participant.
-Everyone managed to to the parcour in under 100 seconds. Most of them were not very interested in collecting all to coins and wanted to enjoy the feeling of virtual skatebaording instead. The interaction task went good aswell. My time statistics are the ones on the right side. My time is the fastest because of my experience I got while developing this.
-After getting used to it everyone had fun and was able to achieve similar scores.
+The parkour statistics for each run look quite good. Everyone had a few attempts to become familiar with the controls. I only recorded the final or best score for each participant.
+
+Everyone managed to complete the parkour in under 100 seconds. Most participants were not very interested in collecting all of the coins and instead wanted to enjoy the feeling of virtual skateboarding. The interaction task also went well. My own statistics are shown on the right side. My time is the fastest because of the experience I gained while developing the project.
+
+After getting used to the controls, everyone had fun and was able to achieve similar scores.
 
 
-### Interpretation of the results
+### Interpretation of the Results
 
-Overall the feedback was quite positive and the statistics looked good. The steering is good and using the locomotion technique is very fun. Some motion sickness were felt but the physicall and mentally demand where low. The participants felt suprisingly safe, even without prior VR experience and even with the HMD on a skateboard on. There are some problems with the calibration, which could be different/better. The unlocking of the steering after the T-Shape Task happens to early which may lead to some motion sickness and requires calibrating new every time.
-Everyone had a fun experience and liked the project.  
+Overall, the feedback was quite positive and the recorded statistics looked good. The steering works well, and using the locomotion technique is very fun.
 
+Some motion sickness was reported, but the physical and mental demand were both low. The participants felt surprisingly safe, even without prior VR experience and despite standing on a skateboard while wearing a head-mounted display.
 
+There are still some problems with the calibration, which could be improved. In addition, the steering is re-enabled too early after the T-shape task, which may lead to motion sickness due to uncontrollable spinning and requires recalibration afterward.
 
+Overall, everyone had a fun experience and liked the project.
 
 
 ## Conclusion
-The Skateboard XR implementation as a new locomotion technique went pretty well. I was able to make an interesting an fun locomotion technique with an unusual style of controlling it. The feeling is pretty similar to skating on a real skateboard with some minor differences. But it felt overall pretty natural. My worries about safety were not that important. The participants felt quite safe and nobody was hurt during the evaluation (or during the development phase).
-There are still some possible improvements especially for preventing motion sickness.
-But overall I am happy and think i have reached my Goals from the problem statement.
 
-I learned a lot about implementing VR/AR applications. Some things are easier than I thought, like implementing a passthrough window via Meta Building Blocks. And with some things I got never in contact before while programming in Unity, like using the sensors of the controlers for tracking theyr rotations.
+The implementation of *Skateboard XR* as a new locomotion technique was quite successful. I was able to create an interesting and enjoyable locomotion technique with an unusual control style. The overall feeling is quite similar to riding a real skateboard, although there are still some minor differences. Nevertheless, it felt natural overall.
 
-It was a very fun and very different experience implementing this project.
+My concerns about safety turned out to be less critical than expected. The participants generally felt safe, and nobody was injured during either the evaluation or the development phase. However, nobody was able to resist holding onto something to maintain their balance, which shows that some compromises are still necessary. For this reason, I think that not implementing the real leg-swing motion that I had originally planned was a reasonable decision in terms of safety and usability.
 
+There is still room for improvement, especially with regard to reducing motion sickness.
 
+Overall, I am happy with the result and believe that I achieved the goals stated in the problem statement.
 
+I learned a lot about developing VR and AR applications. Some aspects were easier than I had expected, such as implementing a passthrough window using Meta Building Blocks. Other aspects were completely new to me, for example working with controller sensors to track their rotations in Unity.
 
+Implementing this project was a very enjoyable and very different experience.
 
 
 
 ## Video + Controls
-Here can you see my complete run on the given parkour with the here explained Skateboard XR locomotion technique and the implemented interaction method.
+The following video shows my complete run through the given parkour course using the *Skateboard XR* locomotion technique and the implemented interaction method described above.
 
 {{< youtube IhXeS8tZ1xg >}}
-
 https://youtu.be/IhXeS8tZ1xg
 
 
-Here are the controls explained:
-
+The controls are explained below:
 {{< img src="images/controlls.png" alt="Controls" >}}
+
 
 ## AI
 
-I used ChatGPT in this Project to discuss my Ideas and the different methods I could use to implement those ideas.
-I used it mostly to substitude reading documentations an searching for anwsers on the internet.
-I used it also to help me find mistakes in my code but also let him write code and discussed it with it.
-The Code I got from ChatGPT was sometimes good but also often not working without changing a few things.
-Especially tweaking values is something I had to do on my own but ChatGPT was able to give me some ranges which could probably work. 
-The spelling and grammar in this blog have also been checked with AI.
+I used ChatGPT in this project to discuss my ideas and explore different methods for implementing them.
 
+I used it as an alternative to reading documentation and searching the internet for answers.
+
+In addition, I used it to help identify mistakes in my code, and I let it generate code aswell, which I then reviewed and refined myself.
+
+The code generated by ChatGPT was sometimes useful, but it often required additional changes before it worked properly.
+
+In particular, fine-tuning values had to be done manually. However, ChatGPT was able to suggest parameter ranges that were likely to be suitable.
+
+This blog post was written manually, but it was slightly improved with the help of AI, since English is not my first language.
 
 
 
