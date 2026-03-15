@@ -53,8 +53,116 @@ Feeling safe during the usage of the locomotion and interaction technique is als
 
 ## 3 Solution
 (Include early versions, sketches, and the final implementation)
+
+
+
+
+
+### AR - a window to the real world
+
+This project benefits from the passthrough possibility of the Meta Quest 3. Having the possobility of adding a window in the VR-world in which you can see the real world is great, esspecially if there is a potential danger of hurting yourself while using the application.
+Because of the usage of a real skateboard in my project, balancing is quite important, but balancing on a skateboard is not the easiest thing. And if you add blindness to the real world with using a HMD it gets even worse which increases the potential of hurting yourself. For that reason I added a portal like window under the player showing the real world.
+
+Real world window concept art:
+{{< img src="images/ar_konzept.png" alt="Real world window concept art" >}}
+
+The idea was that it would be easier to balance if you can see your own feet and the skateboard. After implementing it the reality was, that this is not helping at all. You normaly do not look a loot so much on your feet and even if you do, you do not feel exactly the same way on a skateboard as you do without a headset on even with passthrough enabled. I still let the feature of seeing the real world when you look down in this project, because it is not disturbing the virtual reality feeling that much and even if it does not help with keeping your balance that much it actually helps in moments you might actually fell and it felt safer with this feature implemented. 
+
+In-Game view:
+{{< img src="images/ar_impl.png" alt="In-Game view" >}}
+
+For implementing it I just used an building block from the Meta XR Tools. I also wrote a short script so it beaves as I wanted it to. It is moving always with the position of the HMD and being beneath the player.
+
+The passthrough window in Unity:
+{{< img src="images/ar_unity.png" alt="The passthrough window in Unity" >}}
+
+
+Holding onto something while standing on the skateboard with the head-mounted display (HMD) on is still recommendet!
+
+
+
+
+
+
+### Object Interaction Task
+
+My approach on the interaction Task with the T-Shape was pretty simple.
+You have one T-Shape object that you have to fit as good as possible inside another T-Shape that is static and not movable.
+After that the offset of them is calculated which determines the score how good you where in this task. This was already given in the given project.
+For my implementation I mirrored the moveable T-Shape onto the controller which is mounted on the skateboard and mapped the position in relation to the controller, so that the T-Shape is alignet with the skateboard. With this setup the T-Shape in VR equals the skateboard in the real world. The goal of this implementattion of the task is picking the real skateboard up from the ground and holding it in the air according to the position and rotation of the target T-Shape.
+The position and rotation is locked in via an button press on the controller, which is not mounted on the skateboard.
+The task spawns and starts automatically when its area is entered before reaching each checkpoint.
+
+{{< youtube KYWbXxtEOxs >}}
+
+https://youtu.be/KYWbXxtEOxs
+
+
+
+
+
 ## 4 Implementation Details
-(Focus on complex challenges you solved, not basic steps)
+In this chapter I will show you some code. I will only talk about important and complex challenges here. The complete code is visible in my repository.
+
+This project is made with Unity (Version 6000.0.60f1). The code is written in C#.
+Most of the code for my implementation is in the LocomotionTechnique script. I made minor changes in other scripts and made a few more for the interaction Task.
+
+
+
+
+### Object Interaction Task
+
+For the object interaction T-Shape Task, I used three scripts. I changed the existing SelectionTaskMeasure script and added one script for the left and one script for the right controller for this task.
+
+The script for the right controller contains only the button that needs to be pressed to lock your task in.
+The script for the left controller handles the attaching of the movable T-Shape to the left controller, so the T-Shape moves in VR according to the skateboard in real life.
+The important part happens in the SelectionTaskMeasure script. I changed that the Task starts when entering a collider ao it does not need to be started manually. For this I needed to change the Spawnpoint of the T-Shape. When entering the collider the locomotion stops and gets locked, the target T-Shape spawns and the moveable T-Shape gets attached to the left controller so that it is mirroring the real skateboard in VR.
+
+
+```csharp
+public void StartOneTask()
+    {
+        if (isTaskStart || isCountdown) return;
+        
+        isTaskStart = true;
+        isTaskEnd = false;
+        
+        if (targetT != null) Destroy(targetT);
+        if (objectT != null)
+        {
+            if (attacher != null) attacher.Detach(objectT);
+            Destroy(objectT);
+        }
+        
+        // Locomotion sperren
+        if (parkourCounter != null && parkourCounter.locomotionTech != null)
+            parkourCounter.locomotionTech.SetLocomotionLocked(true);
+        
+        taskTime = 0f;
+        taskStartPanel.SetActive(false);
+        donePanel.SetActive(true);
+        
+        // Spawn target vor dem Spieler in Reichweite
+        Vector3 flatForward = Vector3.ProjectOnPlane(hmdTransform.forward, Vector3.up).normalized;
+        if (flatForward.sqrMagnitude < 0.001f) flatForward = Vector3.forward;
+
+        Vector3 right = Vector3.Cross(Vector3.up, flatForward).normalized;
+        Vector3 origin = hmdTransform.position + Vector3.up * targetHeightFromEye;
+        Vector3 targetPos = origin + flatForward * targetDistance + right * targetSide;
+
+        targetT = Instantiate(targetTPrefab, targetPos, Random.rotation);
+        
+        // Attach T-Shape an Controller
+        objectT = Instantiate(objectTPrefab, attacher.leftAttachPoint.position, attacher.leftAttachPoint.rotation);
+        attacher.Attach(objectT);
+    }
+```
+
+{{< youtube KYWbXxtEOxs >}}
+
+https://youtu.be/KYWbXxtEOxs
+
+
 ## 5 Evaluation
 
 ### Method and Setup
@@ -180,6 +288,8 @@ Here can you see what it looks like to complete a run of on the given parkour wi
 
 
 {{< youtube IhXeS8tZ1xg >}}
+
+https://youtu.be/IhXeS8tZ1xg
 
 ## 8 AI
 If you used ai, we would like you to write one post about that as well. If you don't feel confident to post it on your website, please just send me and Jan an email containing that section. There will be no disadvantages for using ai. If you want, add parts of your chats. (Benefits, problems, did it work well?)

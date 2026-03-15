@@ -172,8 +172,80 @@ Feeling safe during the usage of the locomotion and interaction technique is als
 </ul>
 <h2 id="3-solution">3 Solution</h2>
 <p>(Include early versions, sketches, and the final implementation)</p>
+<h3 id="ar---a-window-to-the-real-world">AR - a window to the real world</h3>
+<p>This project benefits from the passthrough possibility of the Meta Quest 3. Having the possobility of adding a window in the VR-world in which you can see the real world is great, esspecially if there is a potential danger of hurting yourself while using the application.
+Because of the usage of a real skateboard in my project, balancing is quite important, but balancing on a skateboard is not the easiest thing. And if you add blindness to the real world with using a HMD it gets even worse which increases the potential of hurting yourself. For that reason I added a portal like window under the player showing the real world.</p>
+<p>Real world window concept art:
+<img src="/Blog/images/ar_konzept.png" alt="Real world window concept art"></p>
+<p>The idea was that it would be easier to balance if you can see your own feet and the skateboard. After implementing it the reality was, that this is not helping at all. You normaly do not look a loot so much on your feet and even if you do, you do not feel exactly the same way on a skateboard as you do without a headset on even with passthrough enabled. I still let the feature of seeing the real world when you look down in this project, because it is not disturbing the virtual reality feeling that much and even if it does not help with keeping your balance that much it actually helps in moments you might actually fell and it felt safer with this feature implemented.</p>
+<p>In-Game view:
+<img src="/Blog/images/ar_impl.png" alt="In-Game view"></p>
+<p>For implementing it I just used an building block from the Meta XR Tools. I also wrote a short script so it beaves as I wanted it to. It is moving always with the position of the HMD and being beneath the player.</p>
+<p>The passthrough window in Unity:
+<img src="/Blog/images/ar_unity.png" alt="The passthrough window in Unity"></p>
+<p>Holding onto something while standing on the skateboard with the head-mounted display (HMD) on is still recommendet!</p>
+<h3 id="object-interaction-task">Object Interaction Task</h3>
+<p>My approach on the interaction Task with the T-Shape was pretty simple.
+You have one T-Shape object that you have to fit as good as possible inside another T-Shape that is static and not movable.
+After that the offset of them is calculated which determines the score how good you where in this task. This was already given in the given project.
+For my implementation I mirrored the moveable T-Shape onto the controller which is mounted on the skateboard and mapped the position in relation to the controller, so that the T-Shape is alignet with the skateboard. With this setup the T-Shape in VR equals the skateboard in the real world. The goal of this implementattion of the task is picking the real skateboard up from the ground and holding it in the air according to the position and rotation of the target T-Shape.
+The position and rotation is locked in via an button press on the controller, which is not mounted on the skateboard.
+The task spawns and starts automatically when its area is entered before reaching each checkpoint.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KYWbXxtEOxs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p><a href="https://youtu.be/KYWbXxtEOxs">https://youtu.be/KYWbXxtEOxs</a></p>
 <h2 id="4-implementation-details">4 Implementation Details</h2>
-<p>(Focus on complex challenges you solved, not basic steps)</p>
+<p>In this chapter I will show you some code. I will only talk about important and complex challenges here. The complete code is visible in my repository.</p>
+<p>This project is made with Unity (Version 6000.0.60f1). The code is written in C#.
+Most of the code for my implementation is in the LocomotionTechnique script. I made minor changes in other scripts and made a few more for the interaction Task.</p>
+<h3 id="object-interaction-task-1">Object Interaction Task</h3>
+<p>For the object interaction T-Shape Task, I used three scripts. I changed the existing SelectionTaskMeasure script and added one script for the left and one script for the right controller for this task.</p>
+<p>The script for the right controller contains only the button that needs to be pressed to lock your task in.
+The script for the left controller handles the attaching of the movable T-Shape to the left controller, so the T-Shape moves in VR according to the skateboard in real life.
+The important part happens in the SelectionTaskMeasure script. I changed that the Task starts when entering a collider ao it does not need to be started manually. For this I needed to change the Spawnpoint of the T-Shape. When entering the collider the locomotion stops and gets locked, the target T-Shape spawns and the moveable T-Shape gets attached to the left controller so that it is mirroring the real skateboard in VR.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> StartOneTask()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isTaskStart || isCountdown) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        isTaskStart = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        isTaskEnd = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (targetT != <span style="color:#66d9ef">null</span>) Destroy(targetT);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (objectT != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (attacher != <span style="color:#66d9ef">null</span>) attacher.Detach(objectT);
+</span></span><span style="display:flex;"><span>            Destroy(objectT);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Locomotion sperren</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (parkourCounter != <span style="color:#66d9ef">null</span> &amp;&amp; parkourCounter.locomotionTech != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            parkourCounter.locomotionTech.SetLocomotionLocked(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        taskTime = <span style="color:#ae81ff">0f</span>;
+</span></span><span style="display:flex;"><span>        taskStartPanel.SetActive(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>        donePanel.SetActive(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Spawn target vor dem Spieler in Reichweite</span>
+</span></span><span style="display:flex;"><span>        Vector3 flatForward = Vector3.ProjectOnPlane(hmdTransform.forward, Vector3.up).normalized;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (flatForward.sqrMagnitude &lt; <span style="color:#ae81ff">0.001f</span>) flatForward = Vector3.forward;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Vector3 right = Vector3.Cross(Vector3.up, flatForward).normalized;
+</span></span><span style="display:flex;"><span>        Vector3 origin = hmdTransform.position + Vector3.up * targetHeightFromEye;
+</span></span><span style="display:flex;"><span>        Vector3 targetPos = origin + flatForward * targetDistance + right * targetSide;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        targetT = Instantiate(targetTPrefab, targetPos, Random.rotation);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Attach T-Shape an Controller</span>
+</span></span><span style="display:flex;"><span>        objectT = Instantiate(objectTPrefab, attacher.leftAttachPoint.position, attacher.leftAttachPoint.rotation);
+</span></span><span style="display:flex;"><span>        attacher.Attach(objectT);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KYWbXxtEOxs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p><a href="https://youtu.be/KYWbXxtEOxs">https://youtu.be/KYWbXxtEOxs</a></p>
 <h2 id="5-evaluation">5 Evaluation</h2>
 <h3 id="method-and-setup">Method and Setup</h3>
 <p>The evaluation for this Skateboard VR project consists of three parts and combines some qualitative and quantitative aspects.</p>
@@ -278,6 +350,7 @@ Everyone had a fun experience and liked the project.</p>
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IhXeS8tZ1xg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
+<p><a href="https://youtu.be/IhXeS8tZ1xg">https://youtu.be/IhXeS8tZ1xg</a></p>
 <h2 id="8-ai">8 AI</h2>
 <p>If you used ai, we would like you to write one post about that as well. If you don&rsquo;t feel confident to post it on your website, please just send me and Jan an email containing that section. There will be no disadvantages for using ai. If you want, add parts of your chats. (Benefits, problems, did it work well?)</p>
 <img src="/Blog/images/controlls.png" alt="Mein Bild">
@@ -311,8 +384,17 @@ Everyone had a fun experience and liked the project.</p>
         <li></li>
       </ul>
     </li>
-    <li><a href="#3-solution">3 Solution</a></li>
-    <li><a href="#4-implementation-details">4 Implementation Details</a></li>
+    <li><a href="#3-solution">3 Solution</a>
+      <ul>
+        <li><a href="#ar---a-window-to-the-real-world">AR - a window to the real world</a></li>
+        <li><a href="#object-interaction-task">Object Interaction Task</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-implementation-details">4 Implementation Details</a>
+      <ul>
+        <li><a href="#object-interaction-task-1">Object Interaction Task</a></li>
+      </ul>
+    </li>
     <li><a href="#5-evaluation">5 Evaluation</a>
       <ul>
         <li><a href="#method-and-setup">Method and Setup</a></li>
