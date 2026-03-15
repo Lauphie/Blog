@@ -31,7 +31,8 @@ Introduction &amp; Motivation
 Introduction
 This blog post documents a project for the lecture Interaction in Virtual and Augmented Reality (2025/26).
 In this lecture, we learned a lot about VR, AR, and XR, as well as how to create engaging projects in this field.
-To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task." />
+To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task in VR.
+Target platform is a Meta Quest headset. For developing the project, I received a Meta Quest 3 for the period of this lecture." />
   <meta name="author" content="BLOG von Philipp L." /><link rel="preload stylesheet" as="style" href="http://localhost:1313/Blog/main.min.css" />
 
   
@@ -143,7 +144,8 @@ To receive a grade, we were required to design and implement a new locomotion te
 <h3 id="introduction">Introduction</h3>
 <p>This blog post documents a project for the lecture <em>Interaction in Virtual and Augmented Reality</em> (2025/26).</p>
 <p>In this lecture, we learned a lot about VR, AR, and XR, as well as how to create engaging projects in this field.
-To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task.</p>
+To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task in VR.
+Target platform is a Meta Quest headset. For developing the project, I received a Meta Quest 3 for the period of this lecture.</p>
 <p>For this purpose, we were given a project containing a map and a simple example solution to serve as a reference and help us understand what we had to do.</p>
 <img src="/Blog/images/parkour.png" alt="The parkour">
 <p>The map shows a small city with a parkour that has to be completed using the new locomotion technique.</p>
@@ -231,7 +233,17 @@ Once I saw that this approach worked well, I decided to pursue the skateboard id
 <p>I also considered other concepts, such as arm-swinging movements similar to those used in skiing, but I was not satisfied with them.</p>
 <p>My final solution was to simply use the right controller in the hand. The primary trigger is used to accelerate. Although this removes the feeling of physically pushing off the ground, it is somewhat similar to acceleration on an electric longboard or skateboard. The trigger can be pressed to different degrees in order to control the strength of the acceleration.</p>
 <p>The skateboard slows down on its own, similar to how real friction would reduce speed. However, the user can also brake manually by using the secondary trigger.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Beschleunigen mit primary trigger</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Teile velocity in planar + vertical </span>
+</span></span><span style="display:flex;"><span>Vector3 vel = rb.linearVelocity;
+</span></span><span style="display:flex;"><span>Vector3 velPlanar = Vector3.ProjectOnPlane(vel, Vector3.up);
+</span></span><span style="display:flex;"><span>Vector3 velVertical = vel - velPlanar;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> newSpeed = velPlanar.magnitude;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Beschleunigen mit primary trigger</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> trig = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger));
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> throttleOn = trig &gt; <span style="color:#ae81ff">0.001f</span>;
 </span></span><span style="display:flex;"><span>
@@ -249,8 +261,12 @@ Once I saw that this approach worked well, I decided to pursue the skateboard id
 </span></span><span style="display:flex;"><span>    newSpeed *= Mathf.Exp(-rollingDamping * dt);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Drop in boost</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (pendingDropBoost &gt; <span style="color:#ae81ff">0f</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    newSpeed += pendingDropBoost;
+</span></span><span style="display:flex;"><span>    pendingDropBoost = <span style="color:#ae81ff">0f</span>;
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Bremsen mit secondary trigger</span>
@@ -264,6 +280,20 @@ Once I saw that this approach worked well, I decided to pursue the skateboard id
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> brakeDecel = brakeFactor * maxBrakeDecel;
 </span></span><span style="display:flex;"><span>    newSpeed = Mathf.MoveTowards(newSpeed, <span style="color:#ae81ff">0f</span>, brakeDecel * dt);
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>newSpeed = Mathf.Max(<span style="color:#ae81ff">0f</span>, newSpeed);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (pendingJumpUp &gt; <span style="color:#ae81ff">0f</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    velVertical.y = Mathf.Max(velVertical.y, pendingJumpUp);
+</span></span><span style="display:flex;"><span>    pendingJumpUp = <span style="color:#ae81ff">0f</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rb.linearVelocity = velVertical + forward * newSpeed;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><h3 id="ar---a-window-to-the-real-world">AR - A Window to the Real World</h3>
 <p>This project benefits from the passthrough capability of the Meta Quest 3. The possibility of adding a window to the virtual world through which the real world can be seen is especially useful when there is a potential risk of injury while using the application.</p>
 <p>Because my project involves the use of a real skateboard, maintaining balance is very important. However, balancing on a skateboard is already not easy, and wearing a head-mounted display (HMD), which blocks the view of the real world, makes it even more difficult. This further increases the potential risk of injury. For this reason, I added a portal-like window beneath the player that shows the real world.</p>
@@ -279,7 +309,7 @@ Once I saw that this approach worked well, I decided to pursue the skateboard id
 <h3 id="object-interaction-task">Object Interaction Task</h3>
 <p>My approach to the T-shape interaction task was relatively simple.</p>
 <p>There is one movable T-shape object that has to be fitted as accurately as possible into another T-shape that is static and cannot be moved. After that, the offset between the two shapes is calculated, which determines the score for how well the task was completed. This functionality was already provided in the given project.</p>
-<p>For my implementation, I mirrored the movable T-shape onto the controller that is mounted on the skateboard and mapped its position relative to the controller so that the T-shape is aligned with the skateboard. With this setup, the T-shape in VR corresponds to the skateboard in the real world. The goal of this implementation is to pick up the real skateboard from the ground and hold it in the air so that its position and rotation match those of the target T-shape.</p>
+<p>For my implementation, I mirrored the movable T-shape onto the controller that is mounted on the skateboard and mapped its position relative to the controller so that the T-shape is aligned with the skateboard. With this setup, the T-shape in VR corresponds to the skateboard in the real world. The goal of this implementation is to pick up the real skateboard from the ground and hold it in the air so that its position and rotation match those of the target T-shape. For picking up the skateboard, the passthrough window beneath the player is quite useful and makes it easier.</p>
 <p>The position and rotation are confirmed by pressing a button on the controller that is not mounted on the skateboard. The task spawns and starts automatically when the corresponding area is entered before reaching each checkpoint.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KYWbXxtEOxs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>

@@ -14,7 +14,8 @@ Implementing an interaction and locomotion project.
 This blog post documents a project for the lecture *Interaction in Virtual and Augmented Reality* (2025/26).
 
 In this lecture, we learned a lot about VR, AR, and XR, as well as how to create engaging projects in this field.
-To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task.
+To receive a grade, we were required to design and implement a new locomotion technique and some kind of interaction task in VR.
+Target platform is a Meta Quest headset. For developing the project, I received a Meta Quest 3 for the period of this lecture.
 
 For this purpose, we were given a project containing a map and a simple example solution to serve as a reference and help us understand what we had to do.
 
@@ -169,6 +170,16 @@ The skateboard slows down on its own, similar to how real friction would reduce 
 
 
 ```csharp
+
+...
+
+// Teile velocity in planar + vertical 
+Vector3 vel = rb.linearVelocity;
+Vector3 velPlanar = Vector3.ProjectOnPlane(vel, Vector3.up);
+Vector3 velVertical = vel - velPlanar;
+
+float newSpeed = velPlanar.magnitude;
+
 // Beschleunigen mit primary trigger
 float trig = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger));
 bool throttleOn = trig > 0.001f;
@@ -187,8 +198,12 @@ else
     newSpeed *= Mathf.Exp(-rollingDamping * dt);
 }
 
-
-...
+// Drop in boost
+if (pendingDropBoost > 0f)
+{
+    newSpeed += pendingDropBoost;
+    pendingDropBoost = 0f;
+}
 
 
 // Bremsen mit secondary trigger
@@ -202,6 +217,21 @@ if (grip > 0f)
     float brakeDecel = brakeFactor * maxBrakeDecel;
     newSpeed = Mathf.MoveTowards(newSpeed, 0f, brakeDecel * dt);
 }
+
+newSpeed = Mathf.Max(0f, newSpeed);
+
+
+if (pendingJumpUp > 0f)
+{
+    velVertical.y = Mathf.Max(velVertical.y, pendingJumpUp);
+    pendingJumpUp = 0f;
+}
+
+
+rb.linearVelocity = velVertical + forward * newSpeed;
+
+...
+
 ```
 
 
@@ -237,7 +267,7 @@ My approach to the T-shape interaction task was relatively simple.
 
 There is one movable T-shape object that has to be fitted as accurately as possible into another T-shape that is static and cannot be moved. After that, the offset between the two shapes is calculated, which determines the score for how well the task was completed. This functionality was already provided in the given project.
 
-For my implementation, I mirrored the movable T-shape onto the controller that is mounted on the skateboard and mapped its position relative to the controller so that the T-shape is aligned with the skateboard. With this setup, the T-shape in VR corresponds to the skateboard in the real world. The goal of this implementation is to pick up the real skateboard from the ground and hold it in the air so that its position and rotation match those of the target T-shape.
+For my implementation, I mirrored the movable T-shape onto the controller that is mounted on the skateboard and mapped its position relative to the controller so that the T-shape is aligned with the skateboard. With this setup, the T-shape in VR corresponds to the skateboard in the real world. The goal of this implementation is to pick up the real skateboard from the ground and hold it in the air so that its position and rotation match those of the target T-shape. For picking up the skateboard, the passthrough window beneath the player is quite useful and makes it easier.
 
 The position and rotation are confirmed by pressing a button on the controller that is not mounted on the skateboard. The task spawns and starts automatically when the corresponding area is entered before reaching each checkpoint.
 
