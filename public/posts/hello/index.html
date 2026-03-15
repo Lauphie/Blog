@@ -172,7 +172,84 @@ Feeling safe during the usage of the locomotion and interaction technique is als
 </ul>
 <h2 id="3-solution">3 Solution</h2>
 <p>(Include early versions, sketches, and the final implementation)</p>
-<h3 id="ar---a-window-to-the-real-world">AR - a window to the real world</h3>
+<p>My project idea had to be something exciting. I did not want to just use the controllers normaly. My goal from the beginning on was to mount (at least one of) them on to something to create a unique controller which is not just held in hand. The real controler should only be used for tacking the positions and rotations.</p>
+<p>My first real idea was out of my own interests to mount a controller on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an &ldquo;Teleport&rdquo; Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.</p>
+<p>So the idea i went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
+My idea was a simulation of driving around the streets with a skateboard, with a real Skateboard.</p>
+<h3 id="steering">Steering</h3>
+<p>The most important part for my project is the Steering.
+So I made a first little prototype where I had a constant speed and only needed to tilt the left controller to the left and right to steer.
+I put it on my skateboard and tried if the movement with standing on the skateboard and steering like in real is good enough.
+When I saw that this worked well I settled on my skateboard idea.</p>
+<p>The idea for the steering is still the same in the final project.</p>
+<p>todo???
+code???</p>
+<h3 id="modifying-the-skateboard">Modifying the Skateboard</h3>
+<p>To use a skateboard as a extended controller indoors required some modifications.
+First I don not want to roll in real with it it should be stationary. I also do not want to damage the floor in my room. Then I also need to mount the controller in a reasonable and functional way onto the skateboard. Everything should be cheap.</p>
+<p>I ended up taking the wheels of the skateboard of and exchanged them with tennis balls. That did not cost much, because I had some old tennis balls. The skateboard does not roll, does not damage the floor and can still be tilted normally. Other Ideas would not have achieved all these goals.</p>
+<p>I put the controller on an old plastic box and secured it slightly with stuff I had around for my first prototype</p>
+<p>Modified-Skateboard Prototype:
+<img src="/Blog/images/umbauproto.png" alt="Modified-Skateboard Prototype"></p>
+<p>I actually did not change much about this for the final version of the skateboard.
+I used some tape and cardbord to secure the tennis ball wheels more and to protect the floor. And I taped my plastic box tighly to the skateboard and put some foam in it to stabilize and protect the controller when it is inside it. The controller has to be secured in the box with a piece of tape. Other ideas would have had to high costs or required to much time and I decided that it is not important enough for my project here, since it does not have anything to do with the lecture and I will not be using it in the future. (I thought about 3D modelling and printing a case + mounting mechanic for putting it on the skateboard.)</p>
+<p>Modified-Skateboard now:
+<img src="/Blog/images/skate.png" alt="Modified-Skateboard"></p>
+<h3 id="accelerate-and-break">Accelerate and Break</h3>
+<p>A big design challenge where I also had many concept ideas about is the question of how to accelerate.</p>
+<p>My wish was at first having the acceleration be done in the same way it is done on a real skateboard.
+So I wanted to do a real &ldquo;push-movement&rdquo; like its done on a real skateboard just without the pressure and force on the ground that would move you forward.
+(Since I exchanged the wheels of the skateboard with tennis balls is it stationary but with it would still move with too much force.)</p>
+<p>My first problem with this part was figuring out to to track the leg movement.
+I looked up if foot and leg tracking is possible in unity with my given hardware.
+And I thought about how I could mount the controller that is not on the skateboard to the leg with not just wrapping tape around it every time.
+I settled on an Idea involving two elastic belts, a small and a large one, and an carabiner hook.</p>
+<p>The equipment
+<img src="/Blog/images/belt.png" alt="Stuff"></p>
+<p>The big belt is laid around the waist with the carabiner hook on it. Then the wrist strap of the controller is put on the carabiner hook, and the controller laid on the leg. Then the small belt is laid around the leg and securing the controller to it. This worked surprisingly well even with bigger movements.</p>
+<p>The applied equipment:
+<img src="/Blog/images/beltfront.png" alt="The applied equipment - front">
+<img src="/Blog/images/beltleft.png" alt="The applied equipment - side"></p>
+<p>But before I even implemented this method of accelerating I discovered another big problem for my technique.
+Unfortunatly this method requires a &ldquo;swinging leg movement&rdquo; which challenges the balance of the user. And since I already learned during my first prototype tests that keeping the balance on a tilting skateboard with an head mounted display on, even with the window that shows your real feet snd skateboard enabled, is way harder than expected. So swinging your leg and changing its position between on the ground and on your skatebaord introduces more physical movement which increases the difficulty of keeping your balance enormous. And keeping the balance is not even the goal. You have also to controll the tilting angles of the skateboard precisely to take turns and controll it on the virtual street.
+So for the reason of increased level of danger and complicated controls I had to lay this idea off.</p>
+<p>I had other ideas like swinging arm movements like when you ski but was not very happy with them.</p>
+<p>My final idea was just using the right controller in the hand. The primary trigger is used to accelerate. This removes the real pushing feeling but it is similar to the acceleration on an Elekltro-Longboard/Skateboard. The Trigger can be pressed more or less to get a faster or slower acceleration.
+The skateboard slows down on its own like with real friction. But you can break manually with the secondary trigger aswell.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Beschleunigen mit primary trigger</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> trig = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> throttleOn = trig &gt; <span style="color:#ae81ff">0.001f</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (throttleOn)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> shaped = Mathf.Pow(trig, throttleExponent);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> targetSpeed = Mathf.Lerp(minSpeedWhenPressed, maxSpeed, shaped);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (targetSpeed &gt; newSpeed)
+</span></span><span style="display:flex;"><span>        newSpeed = Mathf.MoveTowards(newSpeed, targetSpeed, accel * dt);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Trigger losgelassen -&gt; nur Reibung / Ausrollen</span>
+</span></span><span style="display:flex;"><span>    newSpeed *= Mathf.Exp(-rollingDamping * dt);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Bremsen mit secondary trigger</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> gripRaw = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> grip = Mathf.InverseLerp(brakeDeadzone, <span style="color:#ae81ff">1f</span>, gripRaw);
+</span></span><span style="display:flex;"><span>grip = Mathf.Clamp01(grip);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (grip &gt; <span style="color:#ae81ff">0f</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> brakeFactor = Mathf.Pow(grip, brakeExponent);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> brakeDecel = brakeFactor * maxBrakeDecel;
+</span></span><span style="display:flex;"><span>    newSpeed = Mathf.MoveTowards(newSpeed, <span style="color:#ae81ff">0f</span>, brakeDecel * dt);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ar---a-window-to-the-real-world">AR - a window to the real world</h3>
 <p>This project benefits from the passthrough possibility of the Meta Quest 3. Having the possobility of adding a window in the VR-world in which you can see the real world is great, esspecially if there is a potential danger of hurting yourself while using the application.
 Because of the usage of a real skateboard in my project, balancing is quite important, but balancing on a skateboard is not the easiest thing. And if you add blindness to the real world with using a HMD it gets even worse which increases the potential of hurting yourself. For that reason I added a portal like window under the player showing the real world.</p>
 <p>Real world window concept art:
@@ -386,6 +463,9 @@ Everyone had a fun experience and liked the project.</p>
     </li>
     <li><a href="#3-solution">3 Solution</a>
       <ul>
+        <li><a href="#steering">Steering</a></li>
+        <li><a href="#modifying-the-skateboard">Modifying the Skateboard</a></li>
+        <li><a href="#accelerate-and-break">Accelerate and Break</a></li>
         <li><a href="#ar---a-window-to-the-real-world">AR - a window to the real world</a></li>
         <li><a href="#object-interaction-task">Object Interaction Task</a></li>
       </ul>

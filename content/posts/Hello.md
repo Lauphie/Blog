@@ -55,6 +55,118 @@ Feeling safe during the usage of the locomotion and interaction technique is als
 (Include early versions, sketches, and the final implementation)
 
 
+My project idea had to be something exciting. I did not want to just use the controllers normaly. My goal from the beginning on was to mount (at least one of) them on to something to create a unique controller which is not just held in hand. The real controler should only be used for tacking the positions and rotations.
+
+My first real idea was out of my own interests to mount a controller on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an "Teleport" Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.
+
+So the idea i went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
+My idea was a simulation of driving around the streets with a skateboard, with a real Skateboard.
+
+
+### Steering
+
+The most important part for my project is the Steering. 
+So I made a first little prototype where I had a constant speed and only needed to tilt the left controller to the left and right to steer.
+I put it on my skateboard and tried if the movement with standing on the skateboard and steering like in real is good enough. 
+When I saw that this worked well I settled on my skateboard idea.
+
+The idea for the steering is still the same in the final project.
+
+todo???
+code???
+
+
+### Modifying the Skateboard
+
+To use a skateboard as a extended controller indoors required some modifications.
+First I don not want to roll in real with it it should be stationary. I also do not want to damage the floor in my room. Then I also need to mount the controller in a reasonable and functional way onto the skateboard. Everything should be cheap.
+
+I ended up taking the wheels of the skateboard of and exchanged them with tennis balls. That did not cost much, because I had some old tennis balls. The skateboard does not roll, does not damage the floor and can still be tilted normally. Other Ideas would not have achieved all these goals.
+
+I put the controller on an old plastic box and secured it slightly with stuff I had around for my first prototype
+
+Modified-Skateboard Prototype:
+{{< img src="images/umbauproto.png" alt="Modified-Skateboard Prototype" >}}
+
+
+I actually did not change much about this for the final version of the skateboard.
+I used some tape and cardbord to secure the tennis ball wheels more and to protect the floor. And I taped my plastic box tighly to the skateboard and put some foam in it to stabilize and protect the controller when it is inside it. The controller has to be secured in the box with a piece of tape. Other ideas would have had to high costs or required to much time and I decided that it is not important enough for my project here, since it does not have anything to do with the lecture and I will not be using it in the future. (I thought about 3D modelling and printing a case + mounting mechanic for putting it on the skateboard.)
+
+Modified-Skateboard now:
+{{< img src="images/skate.png" alt="Modified-Skateboard" >}}
+
+
+
+### Accelerate and Break
+A big design challenge where I also had many concept ideas about is the question of how to accelerate.
+
+My wish was at first having the acceleration be done in the same way it is done on a real skateboard.
+So I wanted to do a real "push-movement" like its done on a real skateboard just without the pressure and force on the ground that would move you forward.
+(Since I exchanged the wheels of the skateboard with tennis balls is it stationary but with it would still move with too much force.)
+
+My first problem with this part was figuring out to to track the leg movement.
+I looked up if foot and leg tracking is possible in unity with my given hardware.
+And I thought about how I could mount the controller that is not on the skateboard to the leg with not just wrapping tape around it every time.
+I settled on an Idea involving two elastic belts, a small and a large one, and an carabiner hook. 
+
+The equipment
+{{< img src="images/belt.png" alt="Stuff" >}}
+
+The big belt is laid around the waist with the carabiner hook on it. Then the wrist strap of the controller is put on the carabiner hook, and the controller laid on the leg. Then the small belt is laid around the leg and securing the controller to it. This worked surprisingly well even with bigger movements.
+
+The applied equipment:
+{{< img src="images/beltfront.png" alt="The applied equipment - front" >}}
+{{< img src="images/beltleft.png" alt="The applied equipment - side" >}}
+
+But before I even implemented this method of accelerating I discovered another big problem for my technique.
+Unfortunatly this method requires a "swinging leg movement" which challenges the balance of the user. And since I already learned during my first prototype tests that keeping the balance on a tilting skateboard with an head mounted display on, even with the window that shows your real feet snd skateboard enabled, is way harder than expected. So swinging your leg and changing its position between on the ground and on your skatebaord introduces more physical movement which increases the difficulty of keeping your balance enormous. And keeping the balance is not even the goal. You have also to controll the tilting angles of the skateboard precisely to take turns and controll it on the virtual street.
+So for the reason of increased level of danger and complicated controls I had to lay this idea off.
+
+I had other ideas like swinging arm movements like when you ski but was not very happy with them.
+
+My final idea was just using the right controller in the hand. The primary trigger is used to accelerate. This removes the real pushing feeling but it is similar to the acceleration on an Elekltro-Longboard/Skateboard. The Trigger can be pressed more or less to get a faster or slower acceleration. 
+The skateboard slows down on its own like with real friction. But you can break manually with the secondary trigger aswell.
+
+```csharp
+// Beschleunigen mit primary trigger
+float trig = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger));
+bool throttleOn = trig > 0.001f;
+
+if (throttleOn)
+{
+    float shaped = Mathf.Pow(trig, throttleExponent);
+    float targetSpeed = Mathf.Lerp(minSpeedWhenPressed, maxSpeed, shaped);
+    
+    if (targetSpeed > newSpeed)
+        newSpeed = Mathf.MoveTowards(newSpeed, targetSpeed, accel * dt);
+}
+else
+{
+    // Trigger losgelassen -> nur Reibung / Ausrollen
+    newSpeed *= Mathf.Exp(-rollingDamping * dt);
+}
+
+
+...
+
+
+// Bremsen mit secondary trigger
+float gripRaw = Mathf.Clamp01(OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger));
+float grip = Mathf.InverseLerp(brakeDeadzone, 1f, gripRaw);
+grip = Mathf.Clamp01(grip);
+
+if (grip > 0f)
+{
+    float brakeFactor = Mathf.Pow(grip, brakeExponent);
+    float brakeDecel = brakeFactor * maxBrakeDecel;
+    newSpeed = Mathf.MoveTowards(newSpeed, 0f, brakeDecel * dt);
+}
+```
+
+
+
+
+
 
 
 
@@ -310,3 +422,4 @@ public class Player
         Name = name;
     }
 }
+```
