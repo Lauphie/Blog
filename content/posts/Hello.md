@@ -572,7 +572,7 @@ The controls are explained below:
 
 ## AI
 
-I used ChatGPT in this project to discuss my ideas and explore different methods for implementing them.
+I used ChatGPT 5.2 in this project to discuss my ideas and explore different methods for implementing them.
 
 I used it as an alternative to reading documentation and searching the internet for answers.
 
