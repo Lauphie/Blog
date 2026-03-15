@@ -59,7 +59,7 @@ My project idea had to be something exciting. I did not want to just use the con
 
 My first real idea was out of my own interests to mount a controller on a fisbee and use a throwing motion, or even a real trow (i have no idea how i would have made that save for the hardware) to track and simulate the flight. Another idea for this was to keep holding the frisbee in the hand and controlling the flightpath with moving and tilting it. But this idea would have been an "Teleport" Technique, where the locomotion ist teleporting to the landing point of the frisbee, which would not have been a technique i wanted to use. I still wanted to implement a kind of sport, so you can have fun in a kind of way you like even in the winter month where going outside is not always fun or even possible for some kind of sports.
 
-So the idea i went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
+So the idea I went with did become a simulation. A simulation of something you have to use your whole body for and an implementation which is pretty unique vor an input method for an game.
 My idea was a simulation of driving around the streets with a skateboard, with a real Skateboard.
 
 
@@ -164,12 +164,6 @@ if (grip > 0f)
 ```
 
 
-
-
-
-
-
-
 ### AR - a window to the real world
 
 This project benefits from the passthrough possibility of the Meta Quest 3. Having the possobility of adding a window in the VR-world in which you can see the real world is great, esspecially if there is a potential danger of hurting yourself while using the application.
@@ -193,9 +187,6 @@ Holding onto something while standing on the skateboard with the head-mounted di
 
 
 
-
-
-
 ### Object Interaction Task
 
 My approach on the interaction Task with the T-Shape was pretty simple.
@@ -209,6 +200,18 @@ The task spawns and starts automatically when its area is entered before reachin
 
 https://youtu.be/KYWbXxtEOxs
 
+
+
+### Drop-In-Boost and Jump
+
+The last thing I added as a bonus feature was a boost that simulates dropping in with a skateboard on a ramp and a jump.
+To drop in you move your body weight to the tail, the back part of the skateboard, so the nose, the front part lifts up. Then you change your weight back to the middle/front so you make a rapid movement bringing the nose back down. Real skateboarders use this on ramps to get down with a lot of speed. I use that in my project to give a speed boost on a flat area.
+
+The Jump is done similary. To jump you have to move the nose up and down quickly aswell. The difference is the current speed. If you are stationary or real slow you get a boost. If you are already moving you make a jump.
+
+todo code??
+
+todo video??
 
 
 
